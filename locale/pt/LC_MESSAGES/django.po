@@ -1,0 +1,2093 @@
+# -*- coding: utf-8 -*-
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2019-05-08 21:44+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: apl/settings.py:131
+msgid "Portuguese"
+msgstr ""
+
+#: apl/settings.py:132
+msgid "English"
+msgstr ""
+
+#: biblio/admin.py:19
+msgid "Extra info"
+msgstr "Info adicional"
+
+#: biblio/models.py:8
+msgid "Pages"
+msgstr "Páginas"
+
+#: biblio/models.py:9
+msgid "Chapter"
+msgstr "Capítulo"
+
+#: biblio/models.py:10
+msgid "Paragraph"
+msgstr "Parágrafo"
+
+#: biblio/models.py:11
+msgid "Part"
+msgstr "Parte"
+
+#: biblio/models.py:15
+msgid "Print"
+msgstr "Imprimir"
+
+#: biblio/models.py:16
+msgid "Audio"
+msgstr "Áudio"
+
+#: biblio/models.py:17
+msgid "Video"
+msgstr "Vídeo"
+
+#: biblio/models.py:21
+msgid "Book"
+msgstr "Livro"
+
+#: biblio/models.py:22
+msgid "Collection"
+msgstr "Colecção"
+
+#: biblio/models.py:23
+msgid "Magazine"
+msgstr "Revista"
+
+#: biblio/models.py:24
+msgid "Journal"
+msgstr "Revista"
+
+#: biblio/models.py:25
+msgid "Newspaper"
+msgstr "Jornal"
+
+#: biblio/models.py:26
+msgid "Article"
+msgstr "Artigo"
+
+#: biblio/models.py:29 legends/models.py:19
+msgid "Male"
+msgstr "Masculino"
+
+#: biblio/models.py:29 legends/models.py:19
+msgid "Female"
+msgstr "Feminino"
+
+#: biblio/models.py:29
+msgid "Unknown/Undeclared"
+msgstr ""
+
+#: biblio/models.py:33 legends/models.py:69
+msgid "First Name"
+msgstr "Primeiro Nome"
+
+#: biblio/models.py:34 legends/models.py:70
+msgid "Last Name"
+msgstr "Último Nome"
+
+#: biblio/models.py:36 legends/models.py:81
+msgid "Year of Birth"
+msgstr "Ano de Nasc."
+
+#: biblio/models.py:42 legends/models.py:98
+msgid "Person"
+msgstr "Pessoa"
+
+#: biblio/models.py:46 biblio/models.py:54 biblio/models.py:60
+#: legends/models.py:76 legends/models.py:109 motif/models.py:17
+#: portugal/models.py:34 portugal/models.py:46
+msgid "Name"
+msgstr "Nome"
+
+#: biblio/models.py:55
+msgid "Medium type"
+msgstr "Tipo de Media"
+
+#: biblio/models.py:59
+msgid "Country"
+msgstr "País"
+
+#: biblio/models.py:63 biblio/models.py:79
+msgid "City"
+msgstr "Cidade"
+
+#: biblio/models.py:64
+msgid "Cities"
+msgstr "Cidades"
+
+#: biblio/models.py:72 legends/models.py:141
+msgid "Title"
+msgstr "Título"
+
+#: biblio/models.py:73
+msgid "Sub-Title"
+msgstr "Sub-Título"
+
+#: biblio/models.py:74
+msgid "Authors"
+msgstr "Autores"
+
+#: biblio/models.py:76
+msgid "Volume Type"
+msgstr "Tipo de Volume"
+
+#: biblio/models.py:78
+msgid "Editor"
+msgstr "Compilação"
+
+#: biblio/models.py:80 legends/models.py:149 legends/models.py:167
+msgid "Year"
+msgstr "Ano"
+
+#: biblio/models.py:82
+msgid "Original Year"
+msgstr "Ano Original"
+
+#: biblio/models.py:84
+msgid "Publisher"
+msgstr "Editora"
+
+#: biblio/models.py:87
+msgid "Is Multiple"
+msgstr "Múltiplo"
+
+#: biblio/models.py:89
+msgid "Book/Author web address"
+msgstr "Endereço web do Livro/Autor"
+
+#: biblio/models.py:90 legends/models.py:87
+msgid "Notes"
+msgstr "Notas"
+
+#: biblio/models.py:91 legends/models.py:170
+msgid "Presentation"
+msgstr "Forma"
+
+#: biblio/models.py:117
+msgid "title(s)"
+msgstr "título(s)"
+
+#: biblio/models.py:136
+msgid "authors"
+msgstr "autores"
+
+#: biblio/models.py:152
+msgid "Volume"
+msgstr ""
+
+#: biblio/models.py:153 legends/models.py:147 legends/models.py:289
+msgid "Excerpt"
+msgstr "Excerto"
+
+#: biblio/models.py:154 legends/models.py:148
+msgid "Part, chaper, passage, page, etc.."
+msgstr "Parte, capítulo, passagem, página, etc."
+
+#: content/models.py:17
+msgid "Top"
+msgstr "Cimo"
+
+#: content/models.py:18
+msgid "Bottom"
+msgstr "Fundo"
+
+#: content/models.py:29
+msgid "title"
+msgstr "título"
+
+#: content/models.py:30
+msgid "short title"
+msgstr "título abrev."
+
+#: content/models.py:31
+#, fuzzy
+#| msgid ""
+#| "This is the title that will show on the menus. Defaults to max of 3 words"
+msgid "On the menus. Defaults to max of 3 words"
+msgstr "Este é o titulo que aparecerá nos menus. Máx de 3 palavras."
+
+#: content/models.py:32
+msgid "text"
+msgstr "texto"
+
+#: content/models.py:33
+msgid "keywords"
+msgstr "palavras-chave"
+
+#: content/models.py:35
+msgid "Ancestor"
+msgstr ""
+
+#: content/models.py:37
+msgid "Menu"
+msgstr ""
+
+#: content/models.py:39
+msgid "publish"
+msgstr "publicar"
+
+#: content/models.py:40
+msgid "public articles will be made visible on the website"
+msgstr "os artigos púbicos serão visíveis no sítio web"
+
+#: content/models.py:41
+msgid "publication date"
+msgstr "data de publicação"
+
+#: content/models.py:56
+#, fuzzy
+#| msgid "content"
+msgid "Content"
+msgstr "conte&uacute;do"
+
+#: content/templates/base.html:11
+#, fuzzy
+#| msgid "portuguese legends archive"
+msgid "portuguese legends archive "
+msgstr "arquivo portugu&ecirc;s de lendas"
+
+#: legends/admin.py:57
+msgid "collection"
+msgstr "recolha"
+
+#: legends/admin.py:61 legends/models.py:211
+msgid "Narrative"
+msgstr "Narrativa"
+
+#: legends/admin.py:65
+msgid "Analysis"
+msgstr "Análise"
+
+#: legends/admin.py:73
+msgid "References"
+msgstr "Referências"
+
+#: legends/models.py:19
+msgid "Unknown"
+msgstr "Desconhecido"
+
+#: legends/models.py:36
+msgid "Convinced Disbelief"
+msgstr "Total Descrença"
+
+#: legends/models.py:37
+msgid "Some Scepticism"
+msgstr "Algum Cepticismo"
+
+#: legends/models.py:38
+msgid "Unsure / Uncommitted"
+msgstr "Inseguro/ N empenhado"
+
+#: legends/models.py:39
+msgid "Some Belief"
+msgstr "Crença moderada"
+
+#: legends/models.py:40
+msgid "Convinced Belief"
+msgstr "Crença plena"
+
+#: legends/models.py:44
+msgid "Oral transcription"
+msgstr "Transcrição Oral"
+
+#: legends/models.py:45
+msgid "Memory transcription"
+msgstr "Transcrição de Memória"
+
+#: legends/models.py:46
+msgid "Scientific written text"
+msgstr "Registo escrito Científico"
+
+#: legends/models.py:47
+msgid "Citation/Quote"
+msgstr "Citação"
+
+#: legends/models.py:48
+msgid "Ludic written text"
+msgstr "Registo escrito Lúdico"
+
+#: legends/models.py:80
+msgid "Gender"
+msgstr ""
+
+#: legends/models.py:82
+msgid "Age"
+msgstr "Idade"
+
+#: legends/models.py:83
+msgid "Place of birth"
+msgstr "Local de Nascimento"
+
+#: legends/models.py:85
+msgid "Place of residence"
+msgstr "Local de Residência"
+
+#: legends/models.py:88
+msgid "Contacts, Education, Learned from..., "
+msgstr "Contactos, Educação, aprendido de..."
+
+#: legends/models.py:95
+msgid "age (today)"
+msgstr "idade (agora)"
+
+#: legends/models.py:108
+msgid "Is a sub-category of"
+msgstr "É uma sub-categoria de"
+
+#: legends/models.py:110 motif/models.py:19 motif/models.py:33
+msgid "Description"
+msgstr "Descrição"
+
+#: legends/models.py:123
+msgid "Category"
+msgstr "Categoria"
+
+#: legends/models.py:124 legends/models.py:180
+msgid "Categories"
+msgstr "Categorias"
+
+#: legends/models.py:128
+msgid "Web Reference"
+msgstr "Referência web"
+
+#: legends/models.py:129
+msgid "It should start with a 'http://' and contain no spaces."
+msgstr "Deve começar com 'http://' e não conter espaços."
+
+#: legends/models.py:139
+msgid "Is public?"
+msgstr "Publicar?"
+
+#: legends/models.py:140
+msgid "Version Number"
+msgstr "Núm. de Versão"
+
+#: legends/models.py:140
+msgid "Deprecated"
+msgstr "Desactualizado"
+
+#: legends/models.py:142
+msgid "Support Title"
+msgstr "Título de Apoio"
+
+#: legends/models.py:144
+msgid "Biblio. Ref."
+msgstr "Refs bibliográficas"
+
+#: legends/models.py:146
+msgid ""
+"Filling this will excuse you from filling the remaining fields of this group."
+msgstr ""
+"O preenchimento deste campo dispensa o preenhimento dos restantes deste "
+"grupo."
+
+#: legends/models.py:150 legends/models.py:246
+msgid "Place"
+msgstr "Lugar"
+
+#: legends/models.py:152
+msgid "Collector"
+msgstr "Colector"
+
+#: legends/models.py:154
+msgid "Informant"
+msgstr "Informante"
+
+#: legends/models.py:156
+msgid "Transcription"
+msgstr "Transcrição"
+
+#: legends/models.py:157
+msgid "Most Frequent"
+msgstr "Mais frequentes"
+
+#: legends/models.py:158
+msgid ""
+"(Most frequent single words. You should let *me* fill this in. Thank you.)"
+msgstr ""
+"(Palavras mais frequentes. Permita-me que seja <strong>eu</strong> a "
+"preencher este campo. Obrigado.)"
+
+#: legends/models.py:159
+msgid "Places"
+msgstr "Lugares"
+
+#: legends/models.py:160
+msgid "Names"
+msgstr "Nomes"
+
+#: legends/models.py:168
+msgid "Century"
+msgstr "Século"
+
+#: legends/models.py:169
+msgid "Decade"
+msgstr "Década"
+
+#: legends/models.py:172
+msgid "Belief"
+msgstr "Crença"
+
+#: legends/models.py:174
+msgid "Rating"
+msgstr "Classificação"
+
+#: legends/models.py:175 motif/models.py:20 motif/models.py:34
+msgid "Comments"
+msgstr "Observações"
+
+#: legends/models.py:177
+msgid "Web references"
+msgstr "Referências Web"
+
+#: legends/models.py:178
+msgid "Other References"
+msgstr "Outras Referências"
+
+#: legends/models.py:181
+msgid "Related Narratives"
+msgstr "Narrativas Relacionadas"
+
+#: legends/models.py:183
+msgid "Counties/Parishes"
+msgstr "Concelhos e Freguesias"
+
+#: legends/models.py:184
+msgid "Help us putting it on the map!"
+msgstr "Ajude-nos a colocar no mapa"
+
+#: legends/models.py:185
+msgid "Names occourring or referred to on the Text"
+msgstr "Nomes próprios referidos ou constantes no Texto"
+
+#: legends/models.py:188
+msgid "Common title"
+msgstr "Título Comum"
+
+#: legends/models.py:190
+msgid "Abstract"
+msgstr "Resumo"
+
+#: legends/models.py:191
+msgid "Keywords"
+msgstr "Palavras-chave"
+
+#: legends/models.py:192
+msgid "Separate with commas. Will be converted to lowercase."
+msgstr "Separe com vírgulas. Serão convertidas para minúsculas."
+
+#: legends/models.py:216 legends/models.py:230 legends/models.py:244
+#: legends/models.py:255 legends/models.py:275 legends/models.py:285
+msgid "Record"
+msgstr "Registo"
+
+#: legends/models.py:218 motif/models.py:51
+msgid "Motif"
+msgstr "Motivo"
+
+#: legends/models.py:225
+msgid "Related Motif"
+msgstr "Motivo Relacionado"
+
+#: legends/models.py:226
+msgid "Related Motifs"
+msgstr "Motivos Relacionados"
+
+#: legends/models.py:232 motif/models.py:59
+msgid "Type"
+msgstr "Tipo"
+
+#: legends/models.py:239
+msgid "Related Type"
+msgstr "Tipo Relacionado"
+
+#: legends/models.py:240
+msgid "Related Types"
+msgstr "Tipos Relacionados"
+
+#: legends/models.py:250
+msgid "Related Place"
+msgstr "Lugar Relacionado"
+
+#: legends/models.py:251
+msgid "Related Places"
+msgstr "Lugares Relacionados"
+
+#: legends/models.py:257
+msgid "Related Version"
+msgstr "Versões Relacionadas"
+
+#: legends/models.py:259
+msgid "Strength"
+msgstr "Peso"
+
+#: legends/models.py:260
+msgid "Nature"
+msgstr "Natureza"
+
+#: legends/models.py:270
+msgid "Related Narrative"
+msgstr "Narrativa Relaccionada"
+
+#: legends/models.py:271
+msgid "Related Naratives"
+msgstr "Narrativas Relacionados"
+
+#: legends/models.py:277
+msgid "Related Category"
+msgstr "Categoria Relacionada"
+
+#: legends/models.py:290
+#, fuzzy
+#| msgid "Part, passage, chapter, page(s), lines, etc..,"
+msgid "Part, passage, chapter, page(s), lines, etc.., "
+msgstr "Parte, capítulo, passagem, página, etc."
+
+#: legends/models.py:291
+msgid "Is a rewrite?"
+msgstr "Reescrita?"
+
+#: motif/models.py:18
+msgid "Is Type?"
+msgstr "Tipo"
+
+#: motif/models.py:21
+msgid "Mask"
+msgstr "Mascara"
+
+#: motif/models.py:27
+#, fuzzy
+#| msgid "index"
+msgid "Index"
+msgstr "índice"
+
+#: motif/models.py:28
+msgid "Indices"
+msgstr ""
+
+#: motif/models.py:32
+msgid "Num"
+msgstr "Nº"
+
+#: motif/models.py:48 motif/models.py:56
+msgid "index"
+msgstr "índice"
+
+#: portugal/models.py:23 portugal/models.py:65
+msgid "NUTS code"
+msgstr "Código NUTS"
+
+#: portugal/models.py:33
+msgid "Di"
+msgstr ""
+
+#: portugal/models.py:35 portugal/models.py:47 portugal/models.py:80
+msgid "Area"
+msgstr "Área"
+
+#: portugal/models.py:38 portugal/models.py:48 portugal/models.py:87
+msgid "District"
+msgstr "Distrito"
+
+#: portugal/models.py:45 portugal/models.py:75
+msgid "DiCo"
+msgstr ""
+
+#: portugal/models.py:56 portugal/models.py:78
+msgid "County"
+msgstr "Concelho"
+
+#: portugal/models.py:57
+msgid "Counties"
+msgstr "Concelhos"
+
+#: portugal/models.py:76
+msgid "DiCoPar"
+msgstr "DiCoFre"
+
+#: portugal/models.py:77
+msgid "Parish"
+msgstr "Freguesia"
+
+#: portugal/models.py:79
+msgid "Other Info."
+msgstr "Outra Inf."
+
+#: portugal/models.py:90
+msgid "County/Parish"
+msgstr "Concelho/Freguesia"
+
+#: portugal/models.py:91
+msgid "Counties and Parishes"
+msgstr "Concelhos e Freguesias"
+
+#~ msgid "Footer"
+#~ msgstr "Rodapé"
+
+#~ msgid "Highlight selected"
+#~ msgstr "Destaque seleccionado"
+
+#~ msgid "Toggle Public/Private"
+#~ msgstr "Alternar Publico/Privado"
+
+#~ msgid "name"
+#~ msgstr "nome"
+
+#~ msgid "Keyword argument 'request' must be supplied"
+#~ msgstr "Parâmetro 'pedido' deve ser preenchido"
+
+#~ msgid "Your name"
+#~ msgstr "O seu nome"
+
+#~ msgid "required"
+#~ msgstr "obrigatorio"
+
+#~ msgid "Your email address"
+#~ msgstr "Endereço de Correio Electronico"
+
+#~ msgid "Your message"
+#~ msgstr "A sua mensagem"
+
+#~ msgid "Message cannot be sent from invalid contact form"
+#~ msgstr "A Mensagem não pode ser enviada"
+
+#~ msgid "Akismet thinks this message is spam"
+#~ msgstr "O Akismet crê que esta mensagem é spam"
+
+#~ msgid "images"
+#~ msgstr "imagens"
+
+#~ msgid "advanced"
+#~ msgstr "avançado"
+
+#~ msgid "Enter your e-mail"
+#~ msgstr "Insira o seu endereço electronico"
+
+#~ msgid "Enter your Name"
+#~ msgstr "Insira o seu Nome"
+
+#~ msgid "Enter destination e-mail"
+#~ msgstr "Insira endereço de destino"
+
+#~ msgid "weight"
+#~ msgstr "peso"
+
+#~ msgid "ascendant"
+#~ msgstr "ascendente"
+
+#~ msgid "show thumbnails"
+#~ msgstr "mostrar miniaturas"
+
+#~ msgid "Images will show on the webpage as zoomable thumbnails"
+#~ msgstr "As imagens irão surgir como miniaturas ampliáveis"
+
+#~ msgid "illustration"
+#~ msgstr "ilustração"
+
+#~ msgid "Top Illustration. Min. width 900px. Defaults to parent article"
+#~ msgstr "Ilustração de topo. Largura mín 900px. Reverte para ascendente"
+
+#~ msgid "highlighted"
+#~ msgstr "destacado"
+
+#~ msgid "Is Index"
+#~ msgstr "E Indice"
+
+#~ msgid "Appends links to direct child pages"
+#~ msgstr "Acrescenta ligacos para paginas descendentes"
+
+#~ msgid "title (short)"
+#~ msgstr "título (abrev.)"
+
+#~ msgid "page"
+#~ msgstr "página"
+
+#~ msgid "article"
+#~ msgstr "artigo"
+
+#~ msgid "reference"
+#~ msgstr "referencia"
+
+#~ msgid "attach"
+#~ msgstr "anexar"
+
+#~ msgid "Attachment"
+#~ msgstr "Anexo"
+
+#~ msgid "author"
+#~ msgstr "autor"
+
+#~ msgid "Defaults to YOUR name."
+#~ msgstr "Reverte para o SEU nome."
+
+#~ msgid "Published on"
+#~ msgstr "Publicado em"
+
+#~ msgid "Images"
+#~ msgstr "Imagens"
+
+#~ msgid "Publish"
+#~ msgstr "Publicar"
+
+#~ msgid "Public News will be displayed in the default views."
+#~ msgstr "As Notícias Públicas serão visíveis no Sítio de Internet"
+
+#~ msgid "news"
+#~ msgstr "notícias"
+
+#~ msgid "News"
+#~ msgstr "Noticias"
+
+#~ msgid "First Name(s)"
+#~ msgstr "Primeiro(s) Nome(s)"
+
+#~ msgid "Last Name(s)"
+#~ msgstr "Último(s) Nome(s)"
+
+#~ msgid "Author"
+#~ msgstr "Autor"
+
+#~ msgid "Number"
+#~ msgstr "Nº"
+
+#~ msgid "Year(s)"
+#~ msgstr "Ano(s)"
+
+#~ msgid "Cover"
+#~ msgstr "Capa"
+
+#~ msgid "Leading"
+#~ msgstr "Abertura"
+
+#~ msgid "E.L.O. Issue"
+#~ msgstr "Número E.L.O."
+
+#~ msgid "E.L.O. Issues"
+#~ msgstr "Números E.L.O."
+
+#~ msgid "Issue"
+#~ msgstr "Número"
+
+#~ msgid "Weight"
+#~ msgstr "peso"
+
+#~ msgid "Page Number"
+#~ msgstr "Núm. de Página"
+
+#~ msgid "Is a Note or Review"
+#~ msgstr "Nota ou Revisão"
+
+#~ msgid "E.L.O. Article"
+#~ msgstr "Artigo E.L.O."
+
+#~ msgid "E.L.O. Articles"
+#~ msgstr "Artigos E.L.O."
+
+#~ msgid "Authors' List"
+#~ msgstr "Lista de Autores"
+
+#~ msgid "Suggested article"
+#~ msgstr "Artigo recomendado"
+
+#~ msgid "Newsletter subscription"
+#~ msgstr "Subscrição de boletim"
+
+#~ msgid "Newsletter Subscription was successfully sent. Thank you."
+#~ msgstr "A subscrição do boletim foi emitida com sucesso. Obrigado."
+
+#~ msgid ""
+#~ "<ul class=\"errorlist\"><li><ul class=\"errorlist\"><li>Could not add "
+#~ "Subscriber</li></ul></li></ul>"
+#~ msgstr ""
+#~ "<ul class=\"errorlist\"><li><ul class=\"errorlist\"><li>N&atilde;o foi "
+#~ "poss&iacute;vel adicionar subscritor</li></ul></li></ul>"
+
+#~ msgid "Official name (CAPS)"
+#~ msgstr "Nome oficial (CAPS)"
+
+#~ msgid "Country name"
+#~ msgstr "Nome do pais"
+
+#~ msgid "ISO numeric"
+#~ msgstr "ISO numerico"
+
+#~ msgid "Countries"
+#~ msgstr "Paises"
+
+#~ msgid "State name"
+#~ msgstr "Nome do Estado"
+
+#~ msgid "Abbreviation"
+#~ msgstr "Abreviat."
+
+#~ msgid "US State"
+#~ msgstr "Estado EUA"
+
+#~ msgid "US States"
+#~ msgstr "Estados EUA"
+
+#~ msgid "Extension %(ext)s is not allowed. Only %(allowed)s is allowed."
+#~ msgstr ""
+#~ "A extens&atilde;o %(ext)s n&atilde;o &eacute; v&aacute;lida; Apenas "
+#~ "%(allowed)s."
+
+#~ msgid "Only letters, numbers, underscores, spaces and hyphens are allowed."
+#~ msgstr ""
+#~ "Apenas letras, n&uacute;meros, 'underscores', espa&ccedil;os e h&iacute;"
+#~ "fenes"
+
+#~ msgid "The Folder already exists."
+#~ msgstr "A pasta j&aacute; existe."
+
+#~ msgid "New Name"
+#~ msgstr "Novo Nome"
+
+#~ msgid "The File already exists."
+#~ msgstr "O ficheiro j&aacute; existe."
+
+#~ msgid "Folder"
+#~ msgstr "Pasta"
+
+#~ msgid "Image"
+#~ msgstr "Imagem"
+
+#~ msgid "Document"
+#~ msgstr "Documento"
+
+#~ msgid "Code"
+#~ msgstr "C&oacute;digo"
+
+#~ msgid "The requested Folder does not exist."
+#~ msgstr "A pasta referida n&atilde;o existe."
+
+#~ msgid ""
+#~ "Error finding Upload-Folder (MEDIA_ROOT + FILEBROWSER_DIRECTORY). Maybe "
+#~ "it does not exist?"
+#~ msgstr ""
+#~ "Erro ao procurar a pasta de carregamento (MEDIA_ROOT + "
+#~ "FILEBROWSER_DIRECTORY). Talvez esteja em falta?"
+
+#~ msgid "The Folder %s was successfully created."
+#~ msgstr "A Pasta %s foi criada."
+
+#~ msgid "Permission denied."
+#~ msgstr "N&atilde;o permitido."
+
+#~ msgid "Error creating folder."
+#~ msgstr "Erro ao criar pasta."
+
+#~ msgid "New Folder"
+#~ msgstr "Nova pasta"
+
+#~ msgid "Select files to upload"
+#~ msgstr "Seleccione os ficheiros para carregar"
+
+#~ msgid "Upload"
+#~ msgstr "Carregar"
+
+#~ msgid "The requested File does not exist."
+#~ msgstr "O ficheiro referido n&atilde;o existe."
+
+#~ msgid "The file %s was successfully deleted."
+#~ msgstr "O ficheiro %s foi removido."
+
+#~ msgid "The folder %s was successfully deleted."
+#~ msgstr "A pasta %s foi removida."
+
+#~ msgid "Renaming was successful."
+#~ msgstr "O nome foi alterado."
+
+#~ msgid "Error."
+#~ msgstr "Erro"
+
+#~ msgid "Rename \"%s\""
+#~ msgstr "Renomear \"%s\""
+
+#~ msgid "Rename"
+#~ msgstr "Renomear"
+
+#~ msgid "Versions for \"%s\""
+#~ msgstr "Vers&otilde;es de \"%s\""
+
+#~ msgid "Please correct the following errors."
+#~ msgstr "Por favor corrija os erros abaixo"
+
+#~ msgid ""
+#~ "The Name will be converted to lowercase. Spaces will be replaced with "
+#~ "underscores."
+#~ msgstr ""
+#~ "O Nome ser&aacute; convertido em min&uacute;sculas. Os espa&ccedil;os "
+#~ "ser&atilde;o substitu&iacute;dos por _underscores_"
+
+#~ msgid "Submit"
+#~ msgstr "Enviar"
+
+#~ msgid "BROWSE"
+#~ msgstr "Consultar"
+
+#~ msgid "An Error occured"
+#~ msgstr "Ocorreu um erro"
+
+#~ msgid "Completed"
+#~ msgstr "Conclu&iacute;do"
+
+#~ msgid "Do you want to replace the file"
+#~ msgstr "Quer substituir of ficheiro"
+
+#~ msgid "Image Version"
+#~ msgstr "Vers&atilde;o da Imagem"
+
+#~ msgid "Select"
+#~ msgstr "Seleccionar"
+
+#~ msgid "Width"
+#~ msgstr "Largura"
+
+#~ msgid "Height"
+#~ msgstr "Altura"
+
+#~ msgid "Home"
+#~ msgstr "Início"
+
+#~ msgid "View Image"
+#~ msgstr "Ver imagem"
+
+#~ msgid "Preview"
+#~ msgstr "Antevis&atilde;o"
+
+#~ msgid "Versions"
+#~ msgstr "Vers&otilde;es"
+
+#~ msgid "Are you sure you want to delete this file?"
+#~ msgstr "Tem a certeza que quer apagar este ficheiro?"
+
+#~ msgid "Delete File"
+#~ msgstr "Apagar ficheiro"
+
+#~ msgid "Are you sure you want to delete this Folder?"
+#~ msgstr "Tem a certeza que quer apagar esta Pasta?"
+
+#~ msgid "Delete Folder"
+#~ msgstr "Apagar Pasta"
+
+#~ msgid "Filter"
+#~ msgstr "Filtro"
+
+#~ msgid "By Date"
+#~ msgstr "Por Data"
+
+#~ msgid "Any Date"
+#~ msgstr "Qualquer data"
+
+#~ msgid "Today"
+#~ msgstr "Hoje"
+
+#~ msgid "Past 7 days"
+#~ msgstr "&Uacute;ltimos 7 dias"
+
+#~ msgid "This Month"
+#~ msgstr "Este m&ecirc;s"
+
+#~ msgid "This year"
+#~ msgstr "Este ano"
+
+#~ msgid "By Type"
+#~ msgstr "Por Tipo"
+
+#~ msgid "All"
+#~ msgstr "Todos"
+
+#~ msgid "result"
+#~ msgstr "resultado"
+
+#~ msgid "results"
+#~ msgstr "resultados"
+
+#~ msgid "1 result"
+#~ msgid_plural "%(counter)s results"
+#~ msgstr[0] "1 resultado"
+#~ msgstr[1] "%(counter)s resultado"
+
+#~ msgid "Clear Restrictions"
+#~ msgstr "Limpar restri&ccedil;&otilde;es"
+
+#~ msgid "Search"
+#~ msgstr "Pesquisa"
+
+#~ msgid "Thumbnail"
+#~ msgstr "Miniatura"
+
+#~ msgid "Filename"
+#~ msgstr "Nome do ficheiro"
+
+#~ msgid "Size"
+#~ msgstr "Tamanho"
+
+#~ msgid "Date"
+#~ msgstr "Data"
+
+#~ msgid "Results"
+#~ msgstr "Resultados"
+
+#~ msgid "%(counter)s result"
+#~ msgid_plural "%(counter)s results"
+#~ msgstr[0] "%(counter)s resultado"
+#~ msgstr[1] "%(counter)s resultados"
+
+#~ msgid "source"
+#~ msgstr "fonte"
+
+#~ msgid "Specific narrative"
+#~ msgstr "Narrativa específica"
+
+#~ msgid "As complete as you can"
+#~ msgstr "o mais completo possivel"
+
+#~ msgid "Keyword"
+#~ msgstr "Palavra-chave"
+
+#~ msgid "Audio capture"
+#~ msgstr "Recolha Áudio"
+
+#~ msgid "Author(s)"
+#~ msgstr "Autor(es)"
+
+#~ msgid "Publications"
+#~ msgstr "Publicações"
+
+#~ msgid "Classifications"
+#~ msgstr "Classificações"
+
+#~ msgid "You must fill-in at least one look-up field"
+#~ msgstr "Deve preencher pelo menos um campo de procura"
+
+#~ msgid "Separate tags with commas."
+#~ msgstr "Separe as palavras-chave com vírgulas"
+
+#~ msgid "Django-tagging was not found, tags will be treated as plain text."
+#~ msgstr ""
+#~ "Não foi encontrado o pacote Django-tagging, as palavras-chave serão "
+#~ "tratadas como texto simples."
+
+#~ msgid "country"
+#~ msgstr "país"
+
+#~ msgid "district"
+#~ msgstr "distrito"
+
+#~ msgid "county"
+#~ msgstr "concelho"
+
+#~ msgid "city"
+#~ msgstr "cidade"
+
+#~ msgid "parish"
+#~ msgstr "freguesia"
+
+#~ msgid "village"
+#~ msgstr "sítio"
+
+#~ msgid "place"
+#~ msgstr "lugar"
+
+#~ msgid "Sex"
+#~ msgstr "Sexo"
+
+#~ msgid "Motif Index"
+#~ msgstr "Índice de Motivos"
+
+#~ msgid "Motif Indexes"
+#~ msgstr "Índices de Motivos"
+
+#~ msgid "Type Index"
+#~ msgstr "Índice de tipos"
+
+#~ msgid "Type Indexes"
+#~ msgstr "Índices de Tipos"
+
+#~ msgid "The model %s has already been registered."
+#~ msgstr "O modelo %s j&aaacute; foi registado."
+
+#~ msgid "First child"
+#~ msgstr "Primeiro filho"
+
+#~ msgid "Last child"
+#~ msgstr "&Uacute;ltimo filho"
+
+#~ msgid "Left sibling"
+#~ msgstr "Irm&atilde;o &agrave; Esquerda"
+
+#~ msgid "Right sibling"
+#~ msgstr "Irm&atilde;o &agrave; Direita"
+
+#~ msgid "Cannot insert a node which has already been saved."
+#~ msgstr ""
+#~ "N&atilde;o &eacute; poss&iacute;vel inserir um n&oacute; que j&aacute; "
+#~ "foi guardado."
+
+#~ msgid "An invalid position was given: %s."
+#~ msgstr "Foi especificada uma posi&ccedil;&atilde;o inv&aacute;lida: %s."
+
+#~ msgid "A node may not be made a sibling of itself."
+#~ msgstr "Um n&oacute; n&atilde;o pode ser irm&atilde; de si pr&oacute;prio."
+
+#~ msgid "A node may not be made a child of itself."
+#~ msgstr ""
+#~ "Um n&oacute; n&atilde;o pode ser tornado filho de si pr&oacute;prio."
+
+#~ msgid "A node may not be made a child of any of its descendants."
+#~ msgstr ""
+#~ "Um n&oacute; n&atilde;o pode ser tornado filho dos seus descendentes."
+
+#~ msgid "A node may not be made a sibling of any of its descendants."
+#~ msgstr ""
+#~ "Um n&oacute; n&atilde;o pode ser tornado irm&atilde;o dos seus "
+#~ "descendentes."
+
+#~ msgid "full_tree_for_model tag was given an invalid model: %s"
+#~ msgstr ""
+#~ "O modelo assignado &agrave; 'tag' full_tree_for_model &eacute; inv&aacute;"
+#~ "lido: %s"
+
+#~ msgid "drilldown_tree_for_node tag was given an invalid model: %s"
+#~ msgstr ""
+#~ "O modelo assignado &agrave; 'tag' drilldown_tree_for_node &eacute; "
+#~ "inv&aacute;lido: %s "
+
+#~ msgid "drilldown_tree_for_node tag was given an invalid model field: %s"
+#~ msgstr ""
+#~ "O campo assignado &agrave; 'tag' drilldown_tree_for_node &eacute; "
+#~ "inv&aacute;lido: %s "
+
+#~ msgid "%s tag requires three arguments"
+#~ msgstr "A tag %s requer tr&ecirc;s par&acirc;metros"
+
+#~ msgid "second argument to %s tag must be 'as'"
+#~ msgstr "O segundo par&acirc;metro da tag %s deve ser 'as'"
+
+#~ msgid "%s tag requires either three, seven or eight arguments"
+#~ msgstr "A tag %s requer tr&ecirc;s, sete ou oito par&acirc;metros"
+
+#~ msgid ""
+#~ "if seven arguments are given, fourth argument to %s tag must be 'with'"
+#~ msgstr ""
+#~ "Se s&atilde;o declarados sete par&acirc;metros na tag %s, o quarto "
+#~ "par&acirc;metro deve ser 'with'"
+
+#~ msgid "if seven arguments are given, sixth argument to %s tag must be 'in'"
+#~ msgstr ""
+#~ "Se s&atilde;o declarados sete par&acirc;metros na tag %s, o "
+#~ "sextopar&acirc;metro deve ser 'in'"
+
+#~ msgid ""
+#~ "if eight arguments are given, fourth argument to %s tag must be "
+#~ "'cumulative'"
+#~ msgstr ""
+#~ "Se s&atilde;o declarados oito par&acirc;metros na tag %s, o "
+#~ "quartopar&acirc;metro deve ser 'cumulative'"
+
+#~ msgid ""
+#~ "if eight arguments are given, fifth argument to %s tag must be 'count'"
+#~ msgstr ""
+#~ "Se s&atilde;o declarados oito par&acirc;metros na tag %s, o "
+#~ "quintopar&acirc;metro deve ser 'count'"
+
+#~ msgid ""
+#~ "if eight arguments are given, seventh argument to %s tag must be 'in'"
+#~ msgstr ""
+#~ "Se s&atilde;o declarados oito par&acirc;metros na tag %s, o s&eacute;timo "
+#~ "par&acirc;metro deve ser 'in'"
+
+#~ msgid ""
+#~ "Example: '/about/contact/'. Make sure to have leading and trailing "
+#~ "slashes."
+#~ msgstr ""
+#~ "Exemplo: '/acerca/contacto/'. Certifique-se de que cont&eacute; "
+#~ "barrasiniciais e finais"
+
+#~ msgid "Advanced options"
+#~ msgstr "Op&ccedil;&otilde;es avan&ccedi;adas"
+
+#~ msgid "enable comments"
+#~ msgstr "coment&aacute;rios activados"
+
+#~ msgid "template name"
+#~ msgstr "Nome de 'template'"
+
+#~ msgid "registration required"
+#~ msgstr "inscri&ccedil;&atilde;o requerida"
+
+#~ msgid ""
+#~ "If this is checked, only logged-in users will be able to view the page."
+#~ msgstr ""
+#~ "Se esta for activada, s&oacute; os utilizadores inscritos poder&atilde; "
+#~ "visualizar esta p&aacute;gina"
+
+#~ msgid "multilingual flat page"
+#~ msgstr "P&aacute;gina multilingue simples"
+
+#~ msgid "multilingual flat pages"
+#~ msgstr "P&aacute;gina multilingue simples"
+
+#~ msgid "Separate tags with spaces, put quotes around multiple-word tags."
+#~ msgstr "Separe as etiquetas com espaços"
+
+#~ msgid "Very Low"
+#~ msgstr "Muito baixa"
+
+#~ msgid "Low"
+#~ msgstr "Baixa"
+
+#~ msgid "Medium-Low"
+#~ msgstr "Médio-baixa"
+
+#~ msgid "Medium"
+#~ msgstr "Tipo de Media"
+
+#~ msgid "Medium-High"
+#~ msgstr "Médio-alta"
+
+#~ msgid "High"
+#~ msgstr "Alta"
+
+#~ msgid "Very High"
+#~ msgstr "Muito Alta"
+
+#~ msgid "Right"
+#~ msgstr "Direita"
+
+#~ msgid "Left"
+#~ msgstr "Esquerda"
+
+#~ msgid "Center (Default)"
+#~ msgstr "Centro (por Omissão)"
+
+#~ msgid "Flip left to right"
+#~ msgstr "Voltar da esquerda para a direita"
+
+#~ msgid "Flip top to bottom"
+#~ msgstr "Voltar de cima para baixo"
+
+#~ msgid "Rotate 90 degrees counter-clockwise"
+#~ msgstr "Rodar 90 graus"
+
+#~ msgid "Rotate 90 degrees clockwise"
+#~ msgstr "Rodar -90 graus"
+
+#~ msgid "Rotate 180 degrees"
+#~ msgstr "Rodar 189 graus"
+
+#~ msgid "Tile"
+#~ msgstr "Título"
+
+#~ msgid "Scale"
+#~ msgstr "Escala"
+
+#~ msgid ""
+#~ "Chain multiple filters using the following pattern \"FILTER_ONE-"
+#~ ">FILTER_TWO->FILTER_THREE\". Image filters will be applied in order. The "
+#~ "following filters are available: %s."
+#~ msgstr ""
+#~ "Encadeie múltiplos filtros usando a notação \"FILTRO_UM->FILTRO_DOIS-"
+#~ ">FILTRO_TRES\". Os filtros serão aplicados por ordem. Estão disponíveis "
+#~ "os filtros seguintes: %s."
+
+#~ msgid "image"
+#~ msgstr "imagem"
+
+#~ msgid "date taken"
+#~ msgstr "data de recolha"
+
+#~ msgid "crop from"
+#~ msgstr "cortar por"
+
+#~ msgid "effect"
+#~ msgstr "efeito"
+
+#~ msgid "An \"admin_thumbnail\" photo size has not been defined."
+#~ msgstr "Não foi definido um tamanho \"admin_thumbnail\"."
+
+#~ msgid "size"
+#~ msgstr "tamanho"
+
+#~ msgid "date added"
+#~ msgstr "data de inserção"
+
+#~ msgid "is public"
+#~ msgstr "Publicar"
+
+#~ msgid "Public photographs will be displayed in the default views."
+#~ msgstr "As Imagens públicas serão visíveis no Website"
+
+#~ msgid "is highlight"
+#~ msgstr "destacado"
+
+#~ msgid "Most recent highlight image will be displayed in the wide header"
+#~ msgstr "O destaque mais recente será exibido no cabeçalho largo"
+
+#~ msgid "tags"
+#~ msgstr "etiquetas"
+
+#~ msgid "photo"
+#~ msgstr "imagem"
+
+#~ msgid "photos"
+#~ msgstr "imagens"
+
+#~ msgid "date published"
+#~ msgstr "data de publicacao"
+
+#~ msgid "title slug"
+#~ msgstr "slug de título"
+
+#~ msgid "A \"slug\" is a unique URL-friendly title for an object."
+#~ msgstr "Uma \"slug\" é um título único passivel de ser um endereço web"
+
+#~ msgid "description"
+#~ msgstr "Descrição"
+
+#~ msgid "Public galleries will be displayed in the default views."
+#~ msgstr "Galerias públicas serão visíveis no Sítio Web."
+
+#~ msgid "gallery"
+#~ msgstr "galeria"
+
+#~ msgid "galleries"
+#~ msgstr "galerias"
+
+#~ msgid "count"
+#~ msgstr "total"
+
+#~ msgid "images file (.zip)"
+#~ msgstr "ficheiro de imagens (.zip)"
+
+#~ msgid "Select a .zip file of images to upload into a new Gallery."
+#~ msgstr ""
+#~ "Seleccione um ficheiro .zip com imagens para carregar para a Galeria."
+
+#~ msgid ""
+#~ "Select a gallery to add these images to. leave this empty to create a new "
+#~ "gallery from the supplied title."
+#~ msgstr ""
+#~ "Seleccione a Galeriua à qual adicionar estas imagens. Deixe em branco "
+#~ "para criar uma nova galeria com o título indicado."
+
+#~ msgid ""
+#~ "All photos in the gallery will be given a title made up of the gallery "
+#~ "title + a sequential number."
+#~ msgstr ""
+#~ "Todas as imagens terão um título composto pelo título da galeria seguido "
+#~ "de uma numeração sequencial."
+
+#~ msgid "A description of this Gallery."
+#~ msgstr "Uma descrição desta Galeria"
+
+#~ msgid ""
+#~ "Uncheck this to make the uploaded gallery and included photographs "
+#~ "private."
+#~ msgstr ""
+#~ "Desmarque de modo a que a galeria e imagens incluídas fiquem provativas."
+
+#~ msgid "gallery upload"
+#~ msgstr "carregamento de galeria"
+
+#~ msgid "gallery uploads"
+#~ msgstr "carregamento de galerias"
+
+#~ msgid "rotate or flip"
+#~ msgstr "rodar ou voltar"
+
+#~ msgid "color"
+#~ msgstr "cor"
+
+#~ msgid ""
+#~ "A factor of 0.0 gives a black and white image, a factor of 1.0 gives the "
+#~ "original image."
+#~ msgstr ""
+#~ "Um fator de 0.0 devolve uma imagem a preto e branco; um fator de 1.0 "
+#~ "devolve a imagem original"
+
+#~ msgid "brightness"
+#~ msgstr "brilho"
+
+#~ msgid ""
+#~ "A factor of 0.0 gives a black image, a factor of 1.0 gives the original "
+#~ "image."
+#~ msgstr ""
+#~ "Um fator de 0.0 devolve um fundo preto; um fator de 1.0 devolve a imagem "
+#~ "original"
+
+#~ msgid "contrast"
+#~ msgstr "contraste"
+
+#~ msgid ""
+#~ "A factor of 0.0 gives a solid grey image, a factor of 1.0 gives the "
+#~ "original image."
+#~ msgstr ""
+#~ "Um fator de 0.0 devolve um fundo cinzento; um fator de 1.0 devolve a "
+#~ "imagem original"
+
+#~ msgid "sharpness"
+#~ msgstr "contraste"
+
+#~ msgid ""
+#~ "A factor of 0.0 gives a blurred image, a factor of 1.0 gives the original "
+#~ "image."
+#~ msgstr ""
+#~ "Um fator de 0.0 devolve uma imagem borrada; um fator de 1.0 devolve a "
+#~ "imagem original"
+
+#~ msgid "filters"
+#~ msgstr "filtros"
+
+#~ msgid ""
+#~ "The height of the reflection as a percentage of the orignal image. A "
+#~ "factor of 0.0 adds no reflection, a factor of 1.0 adds a reflection equal "
+#~ "to the height of the orignal image."
+#~ msgstr ""
+#~ "A altura da reflexão como uma percentagem da imagem original. Um factor "
+#~ "de 0.0 não produz reflexão, um factor de 1.0 adiciona uma reflexão igual "
+#~ "em altura à da imagem original"
+
+#~ msgid "strength"
+#~ msgstr "força"
+
+#~ msgid "The initial opacity of the reflection gradient."
+#~ msgstr "Opacidade inicial do gradiente reflectido."
+
+#~ msgid ""
+#~ "The background color of the reflection gradient. Set this to match the "
+#~ "background color of your page."
+#~ msgstr ""
+#~ "A cor de fundo do gradiente da reflexão. Defina como a cor de fundo da "
+#~ "sua página."
+
+#~ msgid "photo effect"
+#~ msgstr "efeito fotográfico"
+
+#~ msgid "photo effects"
+#~ msgstr "efeitos fotográficos"
+
+#~ msgid "style"
+#~ msgstr "estilo"
+
+#~ msgid "opacity"
+#~ msgstr "opacidade"
+
+#~ msgid "The opacity of the overlay."
+#~ msgstr "A opacidade da transparência"
+
+#~ msgid "watermark"
+#~ msgstr "marca-de-água"
+
+#~ msgid "watermarks"
+#~ msgstr "marcas-de-água"
+
+#~ msgid ""
+#~ "Photo size name should contain only letters, numbers and underscores. "
+#~ "Examples: \"thumbnail\", \"display\", \"small\", \"main_page_widget\"."
+#~ msgstr ""
+#~ "P nome do Tamanho de Imagem deve conter apenas letras, números e "
+#~ "underscores: Exemplos.  \"thumbnail\", \"display\", \"small\", "
+#~ "\"main_page_widget\"."
+
+#~ msgid "width"
+#~ msgstr "largura"
+
+#~ msgid ""
+#~ "If width is set to \"0\" the image will be scaled to the supplied height."
+#~ msgstr "Se a largura for \"0\" a imagem será escalonada à altura fornecida."
+
+#~ msgid "height"
+#~ msgstr "altura"
+
+#~ msgid ""
+#~ "If height is set to \"0\" the image will be scaled to the supplied width"
+#~ msgstr "Se a altura for \"0\" a imagem será escalonada à largura fornecida."
+
+#~ msgid "quality"
+#~ msgstr "qualidade"
+
+#~ msgid "JPEG image quality."
+#~ msgstr "qualidade de imagem JPEG"
+
+#~ msgid "upscale images?"
+#~ msgstr "aumentar as iamgens?"
+
+#~ msgid ""
+#~ "If selected the image will be scaled up if necessary to fit the supplied "
+#~ "dimensions. Cropped sizes will be upscaled regardless of this setting."
+#~ msgstr ""
+#~ "Quando seleccionado, a imagem será ampliada até se ajustar às dimensões "
+#~ "fornecidas. Tamanhos recortados serão sempre ampliados."
+
+#~ msgid "crop to fit?"
+#~ msgstr "cortar para encaixar?"
+
+#~ msgid ""
+#~ "If selected the image will be scaled and cropped to fit the supplied "
+#~ "dimensions."
+#~ msgstr ""
+#~ "Quando seleccionado, a imagem será escalonada e cortada para ajustar-seàs "
+#~ "dimensões fornecidas."
+
+#~ msgid "If selected this photo size will be pre-cached as photos are added."
+#~ msgstr ""
+#~ "Quando seleccionado, este tamanho de imagem será pré-armazenado à medida "
+#~ "que as imagens são adicionadas."
+
+#~ msgid "increment view count?"
+#~ msgstr "Aumentar contador?"
+
+#~ msgid ""
+#~ "If selected the image's \"view_count\" will be incremented when this "
+#~ "photo size is displayed."
+#~ msgstr ""
+#~ "Quando selccionado irá incrementar o número de visualizações quando esta "
+#~ "imagem é exibida."
+
+#~ msgid "watermark image"
+#~ msgstr "imagem de marca-de-água"
+
+#~ msgid "photo size"
+#~ msgstr "tamanho de imagem"
+
+#~ msgid "photo sizes"
+#~ msgstr "tamanhos de imagens"
+
+#~ msgid "loading..."
+#~ msgstr "a carregar..."
+
+#~ msgid "preview image"
+#~ msgstr "imagem de antevisão"
+
+#~ msgid "preview image - click to update"
+#~ msgstr "imagem de antevisão - clique para actualizar"
+
+#~ msgid "Recover deleted %(name)s"
+#~ msgstr "Recuperar %(name)s apagado"
+
+#~ msgid "Reverted to previous version, saved on %(datetime)s"
+#~ msgstr "Revertido para uma vers&atilde;o anterior, guardado em %(datetime)s"
+
+#~ msgid ""
+#~ "The %(model)s \"%(name)s\" was reverted successfully. You may edit it "
+#~ "again below."
+#~ msgstr ""
+#~ "O/A %(model)s \"%(name)s\" foi revertido/a. Pode editar novamente abaixo."
+
+#~ msgid "Recover %(name)s"
+#~ msgstr "Recuperar %(name)s"
+
+#~ msgid "Revert %(name)s"
+#~ msgstr "Reverter %(name)s"
+
+#~ msgid "Add %(name)s"
+#~ msgstr "Adicionar %(name)s"
+
+#~ msgid ""
+#~ "Choose a date from the list below to revert to a previous version of this "
+#~ "object."
+#~ msgstr ""
+#~ "Escolha uma data da lista abaixo para reverter para uma vers&atilde;o "
+#~ "anterior deste conte&uacute;do."
+
+#~ msgid "Date/time"
+#~ msgstr "Data/hora"
+
+#~ msgid "User"
+#~ msgstr "Utilizador"
+
+#~ msgid "Comment"
+#~ msgstr "Observações"
+
+#~ msgid "Recover deleted %(verbose_name)s"
+#~ msgstr "Recuperar %(verbose_name)s apagado/a"
+
+#~ msgid "Press the save button below to recover this version of the object."
+#~ msgstr ""
+#~ "Prima o bot&atilde;o de Guardar para recuperar esta vers&atilde; do "
+#~ "conte&uacute;do"
+
+#~ msgid ""
+#~ "Choose a date from the list below to recover a deleted version of an "
+#~ "object."
+#~ msgstr ""
+#~ "Escolha uma data da lista abaixo para recuperar uma vers&atilde;o "
+#~ "anterior de um conte&uacute;do."
+
+#~ msgid "There are no deleted objects to recover."
+#~ msgstr "N&atilde; existem conte&uacute;dos para recuperar."
+
+#~ msgid "History"
+#~ msgstr "Hist&oacute;rico"
+
+#~ msgid "Revert %(verbose_name)s"
+#~ msgstr "Reverter %(verbose_name)s"
+
+#~ msgid "Press the save button below to revert to this version of the object."
+#~ msgstr ""
+#~ "Prima o bot&atilde;o de Guardar para reverter para esta vers&atilde; do "
+#~ "conte&uacute;do"
+
+#~ msgid "synonyms"
+#~ msgstr "sin&oacute;nimos"
+
+#~ msgid "tag"
+#~ msgstr "etiqueta"
+
+#~ msgid "%s can only be set on instances."
+#~ msgstr "%s s&oacute; pode ser declarado em inst&atilde;ncias."
+
+#~ msgid "Multiple tags were given."
+#~ msgstr "Foram fornecidas v&aacute;rias etiquetas."
+
+#~ msgid "A tag may be no more than %s characters long."
+#~ msgstr "Uma etiqueta n&atilde;o pode ter mais do que %s caracteres."
+
+#~ msgid "Each tag may be no more than %s characters long."
+#~ msgstr "Cada etiqueta pode ter no m&aacute;ximo %s caracteres."
+
+#~ msgid "No tags were given: \"%s\"."
+#~ msgstr "N&atilde;o foram fornecidas etiquetas: \"%s\"."
+
+#~ msgid "Multiple tags were given: \"%s\"."
+#~ msgstr "Foram fornecidas m&uacute;ltiplas etiquetas: \"%s\"."
+
+#~ msgid "content type"
+#~ msgstr "tipo de conte&uacute;do"
+
+#~ msgid "object id"
+#~ msgstr "ID do objecto"
+
+#~ msgid "field name"
+#~ msgstr "nome do campo"
+
+#~ msgid "tagged item"
+#~ msgstr "item etiquetado"
+
+#~ msgid "tagged items"
+#~ msgstr "itens etiquetados"
+
+#~ msgid "Tag's synonym"
+#~ msgstr "Sin&oacute;nimo da Etiqueta"
+
+#~ msgid "Tags' synonyms"
+#~ msgstr "Sin&oacute;nimos da Etiquetas"
+
+#~ msgid ""
+#~ "If a list or tuple of tags is provided, they must all be tag names, Tag "
+#~ "objects or Tag ids."
+#~ msgstr ""
+#~ "Se &eacute; fornecida uma lista de etiqueta, elas devem todas ser nomes, "
+#~ "objectos ou IDs de etiquetas"
+
+#~ msgid "The tag input given was invalid."
+#~ msgstr "O input da etiqueta fornecido &eacute; inv&aacute;lido."
+
+#~ msgid "Invalid distribution algorithm specified: %s."
+#~ msgstr "Algoritmo de distribui&ccedil;&atilde;o inv&aacute;lido> %s."
+
+#~ msgid "tagged_object_list must be called with a queryset or a model."
+#~ msgstr ""
+#~ "tagged_object_list deve ser invocado com um queryset ou com um modelo."
+
+#~ msgid "tagged_object_list must be called with a tag."
+#~ msgstr "tagged_object_list deve ser invocado dentro de um tag."
+
+#~ msgid "No Tag found matching \"%s\"."
+#~ msgstr "N&aatile;o foi encontrada nenhuma etiqueta com \"%s\"."
+
+#~ msgid "tags_for_model tag was given an invalid model: %s"
+#~ msgstr ""
+#~ "Foi fornecido um modelo inv&aacute;lido &agrave tag tags_for_model: %s"
+
+#~ msgid "tag_cloud_for_model tag was given an invalid model: %s"
+#~ msgstr ""
+#~ "Foi fornecido um modelo inv&aacute;lido &agrave tag tags_cloud_for_model: "
+#~ "%s"
+
+#~ msgid "tagged_objects tag was given an invalid model: %s"
+#~ msgstr ""
+#~ "Foi fornecido um modelo inv&aacute;lido &agrave tag tagged_objects: %s"
+
+#~ msgid "%s tag requires either three or five arguments"
+#~ msgstr "A tag %s requer tr&ecirc;s ou cinco par&acirc;metros"
+
+#~ msgid "if given, fourth argument to %s tag must be 'with'"
+#~ msgstr ""
+#~ "Quando fornecido, o quarto par&acirc;metro da tag %s deve ser 'with'"
+
+#~ msgid "if given, fifth argument to %s tag must be 'counts'"
+#~ msgstr ""
+#~ "Quando fornecido, o quinto par&acirc;metro da tag %s deve ser 'counts'"
+
+#~ msgid "%s tag requires either three or between five and seven arguments"
+#~ msgstr "A tag %s requer tr&ecirc;s ou entre cinco e sete par&acirc;metros"
+
+#~ msgid ""
+#~ "%(tag)s tag's '%(option)s' option was not a valid integer: '%(value)s'"
+#~ msgstr ""
+#~ "A op&ccedil;&atilde;o '%(option)s' da tag %(tag)s n&atilde;o &eacute; um "
+#~ "n&uacute;mero inteiro v&aacute;lido: '%(value)s'"
+
+#, fuzzy
+#~ msgid "second argument to %s tag must be 'in'"
+#~ msgstr "Parâmetro 'pedido' deve ser preenchido"
+
+#~ msgid "Not Found"
+#~ msgstr "Não encontrado"
+
+#~ msgid "Page Not Found"
+#~ msgstr "Página não encontrada"
+
+#~ msgid "An error has occourred"
+#~ msgstr "Ocorreu um erro"
+
+#~ msgid ""
+#~ "You might have reached a page which does not exist anymore, or to which "
+#~ "you do not have enough priviledges to access"
+#~ msgstr ""
+#~ "Chegou a uma página que já não existe ou para a qual não dispõe "
+#~ "suficientes privilégios de acesso"
+
+#~ msgid "If you believe this is mal-function, please report to the"
+#~ msgstr "Se acha que esta mensagem é um erro, por favor reporte ao"
+
+#~ msgid "Error"
+#~ msgstr "Erro"
+
+#~ msgid "Page Error"
+#~ msgstr "Erro na página"
+
+#~ msgid "If you truly believe this is mal-function, please report to the"
+#~ msgstr "Se acha que esta mensagem é um erro, por favor reporte ao"
+
+#~ msgid "Archive of Portuguese Legends"
+#~ msgstr "Arquivo Português de Lendas"
+
+#~ msgid "Search Form"
+#~ msgstr "Formulário de Pesquisa"
+
+#~ msgid "Bibliography/Sources"
+#~ msgstr "Bibliografia/Fontes"
+
+#~ msgid "Number of records"
+#~ msgstr "Número de registos"
+
+#~ msgid ""
+#~ "\n"
+#~ "<p>There aren't any narratives directly listed under this category.</p>\n"
+#~ "<p>Look up the sub-categories listed on the left.</p>\n"
+#~ msgstr ""
+#~ "\n"
+#~ "<p>Não existem narrativas directamente associadas a esta categoria</p>\n"
+#~ "<p>Atenda às sub-categorias listadas à esquerda</p>\n"
+
+#~ msgid "View map"
+#~ msgstr "Ver mapa"
+
+#~ msgid ""
+#~ "\n"
+#~ "<p>The Archive of Portuguese Legends (APL) is a data-base connected with "
+#~ "an\n"
+#~ "FCT approved project led by the <a href=\"http://www.ceao.info/uk/index."
+#~ "html\" target=\"_blank\">CEAO</a> of the\n"
+#~ "University of the Algarve (PTDC/ELT/65673/2006). It aims at gathering\n"
+#~ "everything connected with legends (lato sensu), from oral belief "
+#~ "narratives\n"
+#~ "to &ldquo;literary&rdquo; legends, from unpublished recordings to all "
+#~ "kinds\n"
+#~ "of written sources.</p>\n"
+#~ "<p>The APL is work in progress with a tentative classification by genre, "
+#~ "a tool of research which will be refined it as we get feedback from\n"
+#~ "the data inserted in it as well as from your comments\n"
+#~ "&lt;ceao@ualg.pt&gt;</p>\n"
+#~ "<p>Please browse through the menus or use our search tool.</p>\n"
+#~ "<p>The menu on the left refers to genres. As you click on any of them,\n"
+#~ "sub-categories will appear, each one leading you to a list of items "
+#~ "which\n"
+#~ "you can choose to read at length.</p>\n"
+#~ "<p>On the right hand-side you will find an alternative gate to the texts\n"
+#~ "&ndash; a frequency-graded list of keywords relevant to the whole corpus "
+#~ "-\n"
+#~ "operational through the keywords you click.</p>\n"
+#~ "<p>Finally, the &ldquo;Search Window&rdquo; (above the keywords) enables "
+#~ "you\n"
+#~ "to browse based on titles, localities, bibliography and so on.</p>\n"
+#~ "<p>Enjoy the journey!</p>\n"
+#~ msgstr ""
+#~ "\n"
+#~ "<p>O Arquivo Portugu&ecirc;s de Lendas (APL) &eacute; uma base de dados "
+#~ "relativa a um projecto liderado pelo CEAO da Universidade do Algarve "
+#~ "(PTDC/ELT/65673/2006). Pretende dar entrada a tudo aquilo a que, lato "
+#~ "sensu, chamamos lendas, desde a narrativa oral de cren&ccedil;as (belief "
+#~ "narratives) at&eacute; &agrave;s lendas &ldquo;liter&aacute;rias&rdquo;, "
+#~ "desde recolhas in&eacute;ditas at&eacute; todas as formas de fontes "
+#~ "escritas.</p><p>O APL &eacute; um instrumento de trabalho (por ora uma "
+#~ "forma emp&iacute;rica de ordena&ccedil;&atilde;o por g&eacute;nero), "
+#~ "trabalho esse que ir&aacute; sendo apurado &agrave; medida que tivermos "
+#~ "feedback n&atilde;o s&oacute; a partir dos dados j&aacute; entrados, mas "
+#~ "tamb&eacute;m dos vossos coment&aacute;rios (ceao@ualg.pt)&nbsp;</"
+#~ "p><p>Podem passear pelos menus ou enveredar por uma pesquisa mais "
+#~ "direccionada.</p><p>O menu &agrave; esquerda refere-se a g&eacute;neros "
+#~ "(propostos ainda provisoriamente). Se clicar num deles ver&aacute; as "
+#~ "respectivas subcategorias (ou propostas tem&aacute;ticas, como nas lendas "
+#~ "hist&oacute;ricas), cada uma com a respectiva lista de itens de que "
+#~ "poder&aacute; ent&atilde;o escolher ler os respectivos textos (listados "
+#~ "no centro da p&aacute;gina).</p><p>&Agrave; direita, encontrar&aacute; um "
+#~ "portal alternativo para os textos &ndash; uma nuvem de palavras-chave "
+#~ "graduadas segundo a respectiva frequ&ecirc;ncia, e relevante para todo o "
+#~ "corpus &ndash; accionada com o clicar de cada palavra.&nbsp;</"
+#~ "p><p>Finalmente, o &ldquo;Formul&aacute;rio de Pesquisa&rdquo; (acima das "
+#~ "Palavras-Chave) permite-lhe pesquisar com base em t&iacute;tulos, "
+#~ "localidades, bibliografia, etc.</p><p>Boa viagem!</p>\n"
+
+#~ msgid "Collected from"
+#~ msgstr "Recolhido de"
+
+#~ msgid "Audio Capture"
+#~ msgstr "Recolha Áudio"
+
+#~ msgid "Place of collection"
+#~ msgstr "Local"
+
+#~ msgid "When"
+#~ msgstr "Quando"
+
+#~ msgid "%(century)s Century "
+#~ msgstr "Séc. %(century)s"
+
+#~ msgid "site admin"
+#~ msgstr "administração do Sítio Web"
+
+#~ msgid "administration"
+#~ msgstr "administração"
+
+#~ msgid "Map Search"
+#~ msgstr "Pesquisa no Mapa"
+
+#~ msgid "Models available in the %(name)s application."
+#~ msgstr "Modelos disponíveis na aplicação %(name)s."
+
+#~ msgid "%(name)s"
+#~ msgstr "%(name)s"
+
+#~ msgid "Add"
+#~ msgstr "Adicionar"
+
+#~ msgid "Change"
+#~ msgstr "Alterar"
+
+#~ msgid "You don't have permission to edit anything."
+#~ msgstr "Não tem permissões para alterar nada"
+
+#~ msgid "Recent Actions"
+#~ msgstr "Acções Recentes"
+
+#~ msgid "My Actions"
+#~ msgstr "As minhas Acções"
+
+#~ msgid "None available"
+#~ msgstr "Indisponível"
+
+#~ msgid "Documentation"
+#~ msgstr "Documentação"
+
+#~ msgid "Change password"
+#~ msgstr "Alterar palavra-passe"
+
+#~ msgid "Log out"
+#~ msgstr "Terminar Sessão"
+
+#~ msgid "Add %(name)s to '%(category)s'"
+#~ msgstr "Adicionar %(name)s a '%(category)s'"
+
+#~ msgid "mock-up"
+#~ msgstr "esquema"
+
+#~ msgid "Overview"
+#~ msgstr "Início"
+
+#~ msgid "Collected records"
+#~ msgstr "Registos recolhidos"
+
+#~ msgid "Motifs"
+#~ msgstr "Motivos"
+
+#~ msgid "Types"
+#~ msgstr "Tipos"
+
+#~ msgid "Contact"
+#~ msgstr "contacto"
+
+#~ msgid "Please correct the errors below"
+#~ msgstr "Por favor corrija os erros abaixo:"
+
+#~ msgid "Calculate"
+#~ msgstr "Calcule"
+
+#~ msgid "You must properly fill this field"
+#~ msgstr "Deve preencher correctamente este campo"
+
+#~ msgid "Human? Enter answer!"
+#~ msgstr "Humano? Insira a resposta"
+
+#~ msgid "Are you human?"
+#~ msgstr "Você é humano?"
+
+#~ msgid "Send"
+#~ msgstr "Enviar"
+
+#~ msgid "Fill out the form (all fields are <strong>required</strong>)"
+#~ msgstr ""
+#~ "Preencha o formulário (todos os campos são <strong>obrigatórios</strong>)"
+
+#~ msgid "Contact complete"
+#~ msgstr "Contacto efectuado"
+
+#~ msgid "Thank you for your contact"
+#~ msgstr "Obrigado pelo seu contacto"
+
+#~ msgid "Your message was successfully sent and will be addressed promptly"
+#~ msgstr ""
+#~ "A sua mensagem foi enviada com sucesso e sera atendida oportunamente"
+
+#~ msgid "Edit Page"
+#~ msgstr "Editar Página"
+
+#~ msgid "Home page"
+#~ msgstr "Início"
+
+#~ msgid "Add to favorites"
+#~ msgstr "Adicionar aos favoritos"
+
+#~ msgid ""
+#~ "Interesting%20article&amp;body=I%20found%20this%20article%20interesting"
+#~ msgstr ""
+#~ "Artigo%20Interessante&amp;body=Encontrei%20este%20artigo%20interessante"
+
+#~ msgid "Send to a friend"
+#~ msgstr "Enviar a um amigo"
+
+#~ msgid "From"
+#~ msgstr "De"
+
+#~ msgid "Enter your e-mail address"
+#~ msgstr "Insira o seu endereço electronico"
+
+#~ msgid "To"
+#~ msgstr "Para"
+
+#~ msgid "Enter destination e-mail address"
+#~ msgstr "Insira endereço de destino"
+
+#~ msgid "Site map"
+#~ msgstr "Ver mapa"
+
+#~ msgid "ELO Journal"
+#~ msgstr "Revista ELO"
+
+#~ msgid "Notes and Reviews"
+#~ msgstr "Notas e Revisoes"
+
+#~ msgid "Abstracts"
+#~ msgstr "Resumos"
+
+#~ msgid "View article"
+#~ msgstr "Ver artigo"
+
+#~ msgid "top"
+#~ msgstr "cimo"
+
+#~ msgid "Site Map"
+#~ msgstr "Mapa do Sitio"
+
+#~ msgid "thru"
+#~ msgstr "a"
+
+#~ msgid "Page"
+#~ msgstr "Página"
+
+#~ msgid "of"
+#~ msgstr "de"
+
+#~ msgid "Narratives tagged with \"%(tag_name)s\""
+#~ msgstr "Narrativas etiquetadas com \"%(tag_name)s\""
+
+#~ msgid "Source"
+#~ msgstr "Fonte"
+
+#~ msgid "y.o."
+#~ msgstr "anos"
+
+#~ msgid "born at"
+#~ msgstr "nasceu em"
+
+#~ msgid "%(century)s Century"
+#~ msgstr "Séc. %(century)s"
+
+#~ msgid "Related Versions"
+#~ msgstr "Versões Relacionadas"
+
+#~ msgid "Narratives by"
+#~ msgstr "Narrativas por"
+
+#~ msgid "Place of Collection"
+#~ msgstr "Local de Recolha"
+
+#~ msgid "Narratives"
+#~ msgstr "Narrativas"
+
+#~ msgid "collected on %(name)s"
+#~ msgstr "recolhidas em %(name)s"
+
+#~ msgid "Narratives tagged with"
+#~ msgstr "Narrativas etiquetadas com"
+
+#~ msgid "Search Results"
+#~ msgstr "Resultados da Pesquisa"
+
+#~ msgid "Search the Archive"
+#~ msgstr "Pesquisar o Arquivo"
+
+#~ msgid "Search now"
+#~ msgstr "Pesquisar"
+
+#~ msgid ""
+#~ "\n"
+#~ "<h4>The search clauses you entered returned a list of too many results."
+#~ "<br />\n"
+#~ "Please go back to the form and refine your search</h4>\n"
+#~ "<br />\n"
+#~ "<a href=\"/search/\">Back to Search form</a>"
+#~ msgstr ""
+#~ "\n"
+#~ "<h4>Os parâmetros de pesquisão geraram uma lista de resultados demasiado "
+#~ "grande<br />\n"
+#~ "Considere voltar atrás e refinar os seus critérios de pesquisa</h4>\n"
+#~ "<br />\n"
+#~ "<a href=\"/search/\">Voltar ao formulário de Pesquisa</a>"
+
+#~ msgid "Error running spellchecker"
+#~ msgstr "Erro ao correr o verificar ortogr&aacute;fico"
+
+#~ msgid "Tel/Mob"
+#~ msgstr "Telef/Movel"
