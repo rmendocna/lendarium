@@ -1,0 +1,12 @@
+<ul class="nav bd-sidenav">
+    {% for cat in categories %}
+    <li>
+        <a href="{{ cat.get_absolute_url }}"{% if cat == current_cat or cat in ancestors %} class="active"{% endif %}>{{ cat.name }} {% spaceless %}{% with descendants=cat.get_descendant_count %}
+            {% if descendants %}<small class="badge">{{ descendants|add:"-1" }}</small>{% endif %}
+        {% endwith %}{% endspaceless %}</a>
+        {% if cat in ancestors %}
+            {% with branch_template_name="legends/inc_categories.html" %}
+                {% include branch_template_name with categories=cat.get_children ancestors=ancestors|slice:"1:" %}{%endwith%}
+        {% endif %}</li>
+    {% endfor %}
+</ul>

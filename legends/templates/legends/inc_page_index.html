@@ -1,0 +1,22 @@
+{% load i18n %}
+<ul class="pagination{% if style %} {{ style }}{% endif %}" aria-label="Page index">
+    {% if pg.has_previous %}
+    <li class="page-item">
+        <a class="page-link" href="?page=1" title="{% trans 'First page' %}">&laquo;</a>
+    </li>
+    {% endif %}
+{% for i in idx %}
+    <li class="page-item">
+    {% if i != '..' and i != pg.number %}
+        <a class="page-link" href="./?page={{ i }}">{{ i }}</a>
+    {% else %}
+        <span class="page-link{% if i == pg.number %} active disabled{% endif%}">{{ i }}</span>
+    {% endif %}
+    </li>
+{% endfor %}
+    {% if pg.has_next %}
+    <li class="page-item">
+        <a class="page-link" href="?page={{ pg.paginator.num_pages }}" title="{% trans 'Last page' %}">&raquo;</a>
+    </li>
+    {% endif %}
+</ul>

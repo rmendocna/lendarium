@@ -1,0 +1,98 @@
+{%extends 'base.html'%}
+{%load i18n tagging_tags %}
+
+{% block head_title %}{{narrative.title}}{% endblock %}
+
+{% block keywords%}{{narrative.most_frequent}}{%endblock%}
+
+{%block title%}
+<small class="float-right" style="margin-top: -15px;">APL {{narrative.id}}</small> {{narrative.title}}{%endblock%}
+
+{% block menu %}
+    {% include 'legends/inc_categories.html' with ancestors=category.get_ancestors categories=categories current_cat=category %}
+{% endblock %}
+
+{% block redirect_to %}{% url 'category-legend-by-id' nid=object.pk cid=category.pk %}{% endblock %}
+
+{% block  breadcrumb %}
+    {% for ancestor in category.get_ancestors %}
+    <li class="breadcrumb-item"><a href="{{ ancestor.get_absolute_url }}">{{ ancestor.name }}</a></li>{% endfor %}
+    <li class="breadcrumb-item"><a href="{{ category.get_absolute_url }}">{{ category.name }}</a></li>
+{% endblock %}
+
+{%block content%}
+    {% if request.user.is_authenticated and request.user.is_staff %}<a target="_blank" href="{% url 'admin:legends_narrative_change' object.pk %}" class="float-right">{% trans 'Edit' %}</a>{% endif %}
+    {% if narrative.abstract %}<span class="abstract">{{ narrative.abstract|safe }}</span>{% endif %}
+<div class="blockquote">
+    {{ narrative.transcription|safe }}
+</div>
+    {% if narrative.audio %}<a href="{{ narrative.audio }}">{% trans "Audio Capture" %}</a>{% endif %}
+<dl class="container-fluid row">
+    {% if narrative.citation%}<dt class="col-sm-2">{% trans 'Source'%}</dt><dd class="col-sm-10">
+        {% with narrative.citation as quote %}{{quote.authorlist}}
+  <a href="{# url biblio_detail slug=quote.slug #}"><em>{{ quote.fulltitle }}</em></a>
+          {{quote.city}}, {{quote.publisher}}, {{quote.pub_year}}
+          {% if quote.original_year %} [{{quote.original_year}}]{%endif%}
+        {% endwith %}
+    {% if narrative.excerpt %}, p.{{ narrative.excerpt }} {%endif%}</a>{%endif%}</dd>
+    {% if narrative.collection_year %}<dt class="col-sm-2">{% trans 'Year'%}</dt><dd class="col-sm-10">{{narrative.collection_year}}</dd>{%endif%}
+    {% if narrative.collection_place %}<dt class="col-sm-2">{% trans 'Place of collection'%}</dt><dd class="col-sm-10">{{narrative.collection_place.pretty_print|safe}}</dd>{%endif%}
+    {% if narrative.collector%}<dt class="col-sm-2">{% trans 'Collector'%}</dt><dd class="col-sm-10">{{narrative.collector}}
+        {% if narrative.collector.sex%}({{narrative.collector.sex}}){%endif%}{%if narrative.collector.age%} ({{narrative.collector.age}} {%trans 'y.o.'%}){%endif%}</dd>{%endif%}
+    {% with inf=narrative.informant %}
+        {% if inf %}<dt class="col-sm-2">{% trans 'Informant' %}</dt><dd class="col-sm-10">{{ inf }}
+            {% if inf.sex%}({{inf.sex}}), {% endif %}{% if inf.age %} {{ inf.age }} {% trans 'y.o.' %}, {%endif%}
+            {% if inf.residence%}{{ inf.residence }}, {%endif%}
+            {% if inf.birthplace%}{% trans 'born at' %} {{ inf.birthplace}}, {%endif%}</dd>
+        {%endif%}
+    {% endwith %}
+</dl>
+
+<fieldset><legend>{%trans 'Narrative'%}</legend>
+<dl class="container-fluid row">
+    <dt class="col-sm-2">{%trans 'When'%}</dt><dd class="col-sm-10">{%if narrative.year_narrative%}{{narrative.year_narrative}}{%else%}
+{%if narrative.date_century%}{%blocktrans with century=narrative.date_century %}{{century}} Century{%endblocktrans%}, {%endif%}
+{%if narrative.date_decade%}{{narrative.date_decade}}s{%endif%}
+{%endif%}</dd>
+{% if narrative.belief%}
+<dt class="col-sm-2">{% trans 'Belief'%}</dt><dd class="col-sm-10">{{narrative.get_belief_display}}</dd>
+{%endif%}
+{% if narrative.places.all.count %}
+<dt class="col-sm-2">{%trans 'Places'%}</dt><dd class="col-sm-10"> {% for place in narrative.places.all%}{{place}}<br />{%endfor%}</dd>
+{%endif%}
+{% if narrative.narrativeversion_related.all.count%}
+<dt class="col-sm-2">{% trans 'Related Versions'%}</dt><dd class="col-sm-10">{% for version in narrative.narrativeversion_related.all%}<a href="{#version.version.get_absolute_url#}">{{version.version.title}}</a><br /> {%endfor%}
+{% for reversion in narrative.version_narrative_related.all%}<a href="{#reversion.narrative.get_absolute_url#}">{{reversion.narrative.title}}</a><br />{%endfor%}
+</dd>
+{%endif%}</dl>
+</fieldset>
+
+<fieldset><legend>{% trans 'Classifications' %}</legend>
+    {% if narrative.narrativemotif_related.all.count%}
+    <dl class="container-fluid row">
+<dt class="col-sm-2">{% trans 'Motifs'%}</dt><dd class="col-sm-10">{% for motif in narrative.narrativemotif_related.all%}{{motif.motif}}<br />
+    {%endfor%}</dd>{%endif%}
+    {% if narrative.narrativetype_related.all.count%}
+<dt class="col-sm-2">{% trans 'Types'%}</dt><dd class="col-sm-10">{% for type in narrative.narrativetype_related.all%}{{type.type}}<br />
+    {%endfor%}</dd></dl>{%endif%}
+</fieldset>
+{%endblock%}
+
+{% comment %}
+
+{% block sidebar %}
+<h3>{%trans 'Categories'%}</h3>
+{% for cat in narrative.categories.all%}<a href="{#cat.get_absolute_url#}">{{cat.name}}</a><br />{%endfor%}
+{%with narrative.translations.all.0 as narrativetrans%}
+{% tags_for_object narrativetrans as tag_list%}
+{%if tag_list.count%}
+<h3>{% trans 'Keywords'%}</h3>
+{% for kw in tag_list%}<a href="{# url narrative_list_by_tag_id kw.id #}">{{kw}}</a><br />{%endfor%}
+{%endif%}
+{%for place in narrative.many_places.all%}
+{%if forloop.first%}<h3>Place tags</h3>{%endif%}
+{{place}}</br>
+{%endfor%}
+{%endwith%}
+{%endblock%}
+{% endcomment %}

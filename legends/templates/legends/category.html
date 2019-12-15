@@ -1,0 +1,42 @@
+{% extends 'legends/listing.html' %}
+{% load i18n legends %}
+
+{% block head_title %}{{ category }}{% endblock %}
+
+{% block menu %}
+    {% include 'legends/inc_categories.html' with ancestors=category.get_ancestors categories=categories current_cat=category %}
+{% endblock %}
+
+{% block redirect_to %}{% url 'category-by-id' cid=category.pk %}{% endblock %}
+
+{% block breadcrumb %}
+    {% for ancestor in category.get_ancestors %}
+<li class="breadcrumb-item"><a href="{{ ancestor.get_absolute_url }}">{{ ancestor.name }}</a></li>{% endfor %}
+{% endblock %}
+
+{% block title %}{{ category.name }}{% endblock %}
+
+{% block subcategories %}
+    {% if category.get_children.exists %}
+        {% with narrs=object_list.count %}
+            {% if narrs > 0 %}
+                {% blocktrans count cats=category.get_children.count %}
+There is {{ cats }} subcategory and <a href="#nstart">{{ narrs }} narratives</a>
+                {% plural %}
+There are {{ cats }} subcategories and <a href="#nstart">{{ narrs }} narratives</a>
+                {% endblocktrans %}
+            {% else %}
+                {% blocktrans count cats=category.get_children.count %}
+There is {{ cats }} subcategory
+                {% plural %}
+There are {{ cats }} subcategories
+                {% endblocktrans %}
+            {% endif %}
+        {% endwith%}
+<div class="list-group">
+        {% for subcat in category.get_children %}
+    <a class="list-group-item" href="{{ subcat.get_absolute_url }}">{{ subcat }} {% if  subcat.get_descendant_count %}({{ subcat.get_descendant_count }}){% endif %} <span class="badge">{{ subcat.narrative_categories.count }}</span></a>
+        {% endfor %}
+</div>
+    {% endif %}
+{% endblock %}

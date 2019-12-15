@@ -1,0 +1,180 @@
+body {
+    background: url(../img/fundo_bicha2.jpg) fixed center top no-repeat #AD9F72;
+    margin-top: 8rem;
+    }
+body, td, th {
+    color:#444;
+    }
+body>.container-fluid>.row>div[class^="col-md"] { padding-top: 3rem; padding-bottom: 3em}
+a {color:#AB5E00;text-decoration:none;}
+a img { border: 0px none;}
+a:hover {color:#F10000; text-decoration:underline; }
+h1 { margin-bottom: 1rem }
+h1, h2, h3, h4 {font-weight:normal; font-family: "Times New Roman", Times, serif;}
+h1, h2 {color:#9A3503;}
+h2 {text-transform:uppercase;}
+h3 {color:#435C6D; font-family: Arial, Helvetica, Geneva, sans-serif;}
+cite p { line-height: 140%; color:#666; }
+main > h1 { margin-bottom: 2rem }
+.breadcrumb { background: none transparent }
+.breadcrumb a { font-size: 1.1rem; font-weight: 300; color: #EED;
+            text-shadow: -1px -1px 3px #9D8D5C; letter-spacing:0.05rem}
+.breadcrumb a:hover { color: #EED; text-shadow: none}
+.breadcrumb-item+.breadcrumb-item::before { color: #EED; content: "::" }
+.separador{ padding-bottom:5px; border-bottom:1px #666 solid; text-align:right; }
+.content { background-color:#F7F7EE; padding: 1.5rem; border-radius: 1rem; }
+.bd-sidebar {
+    -ms-flex-order: 0;
+    order: 0;
+}
+.nav.bd-sidenav { flex-flow: column }
+.nav.bd-sidenav li { display: block; margin-right: 0 }
+.nav.bd-sidenav li a { padding: .4rem }
+.bd-sidenav .bd-sidenav { margin-left: 15px }
+
+.bd-toc {
+    -ms-flex-order: 2;
+    order: 2;
+    padding-top: 1.5rem;
+    padding-bottom: 1.5rem;
+    font-size: .875rem;
+}
+.bd-toc {
+    position: -webkit-sticky;
+    position: sticky;
+    top: 4rem;
+    height: calc(100vh - 4rem);
+}
+.bd-content {
+    -ms-flex-order: 1;
+    order: 1;
+}
+.bd-search {
+    position: relative;
+    margin-top: 5rem;
+}
+
+.bd-links {
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    margin-right: -15px;
+    font-size: 1.1rem;
+}
+.collapse:not(.show) {
+    display: none;
+}
+.nav ul li {border-bottom: #C5B087 solid 1px; padding: 4px 0px; white-space: nowrap;
+	color:#9A3503; margin-right:10px; display:block; font-weight: 300; letter-spacing: .06em;}
+.nav.bd-sidenav li span { padding: .4rem 0 .4rem .4rem; display: block; font-size: 1.1em}
+.nav.bd-sidenav li .nav.bd-sidenav li span { background-color: #F7F7EE }
+.nav>ul { padding-left: .5rem}
+.nav>ul>li { font-size: 1.2rem; text-align: right }
+.nav li a { padding: 4px 0px; color:#FFF; text-decoration:none; text-transform: capitalize; text-shadow: 3px 0 4px #8D7D5C}
+.nav ul li a:hover, .nav ul li a.active {color:#9A3503; text-shadow: none}
+.nav ul li ul { list-style-type: none; margin-top: .5rem}
+.nav ul li ul li { border:none; padding: 0; font-size: .95em}
+.nav ul li ul li a { color:#EFE9DC;}
+.nav ul li ul li a {padding: 2px; text-shadow: 2px 2px 3px #9D8D5C}
+.nav ul li ul li ul li {padding-right: 5px; border-right: 1px #9A3503 solid;}
+.nav ul li ul li ul li a {color:#530;}
+.small {font-size: 0.85em; }
+
+
+.nav ul.pagination li { margin: 0; border: none }
+.nav ul.pagination li a {padding: .5rem .7rem; color: inherit }
+.blockquote { background-color: #FFF; color: #555; padding: 1rem; border-left: 1px #9A3503 solid; text-indent: 1rem}
+.blockquote p.cv_li { margin-top: 2px; margin-bottom: 2px;}
+a.cite:hover { text-decoration: none }
+
+small.badge { color: inherit; text-shadow: none; font-weight: 300; background-color: transparent; line-height: inherit;
+ padding: .2rem 0; margin: 0 -.3rem:weight }
+.nav.bd-sidenav li .nav.bd-sidenav li a:hover, .nav.bd-sidenav li .nav.bd-sidenav li a.active {
+    background-color: #e0e0d0;
+    letter-spacing: .045rem;
+    font-weight: 400
+}
+.navbar.fixed-top {
+/*
+    background-color: transparent;
+    background-position: center top;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    */
+    background:
+        linear-gradient(rgba(173, 159, 114, .9), rgba(173, 159, 114, 0.0), rgba(255, 255, 255, 0.0)),
+        transparent url(../img/btop.png) repeat-x fixed center top ;
+}
+
+@media (max-width: 991.98px) {
+   .nav ul li { white-space: normal }
+    body { background-position: 20% top; }
+}
+
+@media (min-width: 768px) {
+    .bd-content {
+        margin-top: -3rem
+    }
+    .bd-toc-item {
+        max-height: calc(100vh - 15rem);
+        display: block!important;
+        overflow-y: auto;
+        overflow-x: hidden;
+    }
+    .navbar-brand { margin-bottom: -60px }
+    .nav ul li { padding: 0; }
+    .nav ul li span { display: block; }
+    .nav ul li a { display: block; }
+    .bd-sidebar {
+        position: -webkit-sticky;
+        position: sticky;
+        top: 4rem;
+        z-index: 1000;
+        height: calc(100vh - 4rem);
+    }
+    .bd-navbar {
+        position: -webkit-sticky;
+        position: sticky;
+        top: 0;
+        z-index: 1071;
+    }
+    .nav.bd-sidenav li {
+        margin-right: 0
+    }
+    .nav.bd-sidenav li a {
+        display: block
+    }
+
+    .nav.bd-sidenav li a:hover, .nav.bd-sidenav li a.active {
+        background-color: #9D8F62;
+    }
+   .bd-links {
+        display: block!important;
+      }
+}
+@media (min-width: 1200px) {
+    .bd-sidebar {
+        -ms-flex: 0 1 320px;
+        flex: 0 1 320px;
+    }
+}
+@media (max-width: 768px) {
+    body {
+        margin-top: 5rem;
+    }
+    .bd-toc-item { margin-bottom: -2rem }
+
+    .nav.bd-sidenav li a { padding: .4rem 0 .4rem .8rem; display: block;
+        background-image: -webkit-gradient( linear, left top, right top, from(rgba(110,100,60,0.5)), to(rgba(80,80,80,0)), color-stop(.9,transparent) );
+}
+    .nav.bd-sidenav { margin-bottom: 1rem }
+    .nav.bd-sidenav .nav.bd-sidenav { flex-flow: inherit;  flex-wrap: wrap;}
+    .nav.bd-sidenav .nav.bd-sidenav a, .nav.bd-sidenav .nav.bd-sidenav span { border-radius: .3rem; padding: .4rem .6rem}
+    .nav.bd-sidenav .nav.bd-sidenav a {
+            background-image: none; display: inline-block;
+            background-color: #AD9F72; box-shadow: 3px 0px 7px #631; }
+    .nav.bd-sidenav .nav.bd-sidenav li { border-bottom: none; display: inline-block; margin-right: .5rem }
+    .navbar.fixed-top {
+        background-position: left top;
+        }
+}
+
