@@ -1,0 +1,10 @@
+Django>=2.2,<2.3
+django_mptt
+django-photologue
+django-reversion==3.0.3
+django-rosetta
+django-tagging
+django-tinymce
+django_translated_fields
+nltk
+psycopg2==2.8.2
