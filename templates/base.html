@@ -11,7 +11,7 @@
 
     <meta name="keywords" content="{% trans 'portuguese legends archive '%}{%block keywords%}{%endblock%}" />
     <title>{% block head_title %}{% endblock %}</title>
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'css/all.min.css'%}"></head>
     {% block css %}
     {% endblock %}
   </head>
@@ -78,17 +78,16 @@
           </div>
       </div>
   {% endblock %}
-
+  <script src="{% static 'js/jquery-3.2.1.slim.min.js' %}"></script>
+  <script src="{% static 'js/popper.min.js' %}"></script>
+  <script src="{% static 'js/bootstrap.min.js' %}"></script>
+  <script>
+      $('[data-target="#bd-docs-nav"]').click(function (ev) {
+           window.scrollTo(0, 0);
+           return true
+      })
+  </script>
   {% block js %}
-    <script src="{% static 'js/jquery-3.2.1.slim.min.js' %}"></script>
-    <script src="{% static 'js/popper.min.js' %}"></script>
-    <script src="{% static 'js/bootstrap.min.js' %}"></script>
-      <script>
-          $('[data-target="#bd-docs-nav"]').click(function (ev) {
-               window.scrollTo(0, 0);
-               return true
-          })
-      </script>
   {% endblock %}
   </body>
 </html>

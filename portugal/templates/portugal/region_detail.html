@@ -1,0 +1,63 @@
+{% extends 'legends/listing.html' %}
+
+{% block head_title %} {{ object.name }} {% endblock %}
+{% block title %}{{ object.name }}
+<small class="badge ml-auto text-muted">{% if page_obj.has_other_pages %} {{ object_list|length }} /{{ page_obj.paginator.count }}{% else %}#{{ object_list|length }} {% endif %}</small>{% endblock %}
+
+{% block menu %}
+    {% include 'legends/inc_categories.html' with ancestors=object.get_ancestors categories=drilldown current_cat=object %}
+{% endblock %}
+
+{% block breadcrumb %}
+    {% for ancestor in object.get_ancestors %}
+    <li class="breadcrumb-item">{% if not forloop.first %}<a href="{{ ancestor.get_absolute_url }}">{% endif %}{{ ancestor.name }}{% if not forloop.first %}</a>{% endif %}</li>{% endfor %}
+    <li class="breadcrumb-item d-xs-none">{{ object.name }}</li>
+{% endblock %}
+
+{% block redirect_to %}{% endblock %}
+
+{% block js %}
+    {# block.super #}
+<script src='//api.mapbox.com/mapbox.js/v3.2.1/mapbox.js'></script>
+<script>
+var map = mapLoaded = placesLayer =  false;
+
+var renderMap = function () {
+    var centroid = [0, 0],
+        mapboxLayer = L.tileLayer(// '//api.mapbox.com/v4/{id}/{z}/{x}/{y}.jpg70?access_token={accessToken}', {
+            '//api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
+            attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+            // id: 'mapbox.satellite',
+            id: 'mapbox/streets-v11',
+            accessToken: '{{ map_token }}'
+        }),
+        placesLayer = L.geoJSON({{ object.mpoly.json|safe }}, {
+            style: function (feature) {
+                return {color: feature.properties.color || '#F00'};
+            }
+        }).bindPopup(function (layer) {
+            return layer.feature.properties.description;
+        }),
+        bounds = placesLayer.getBounds(),
+        centroid = bounds.getCenter(),
+        map = L.map('map-box', {
+            center: [centroid.lat, centroid.lng],
+            minZoom: 6,
+            zoom: 9,
+            scrollWheelZoom: false
+        });
+    mapboxLayer.addTo(map);
+    placesLayer.addTo(map)
+    map.fitBounds(bounds);
+    mapLoaded = true;
+}
+$(document).ready(function () {
+    $('#map-tab').on('shown.bs.tab', function (e) {
+        if (mapLoaded)
+            return;
+        renderMap()
+        mapLoaded = true
+    })
+});
+</script>
+{% endblock %}

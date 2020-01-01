@@ -11,7 +11,6 @@ from django.views.generic.detail import DetailView
 from django.views.generic.list import ListView
 
 from .models import Narrative, Category
-from portugal.models import Region
 
 
 def old_category_redirect(request, id, page=1):
@@ -41,7 +40,8 @@ class CategoryMixin(LangMixin):
     def category(self):
         if not self._category:
             slug_field = self.get_lang_field('slug')
-            self._category = Category.objects.get(**{slug_field: self.kwargs['slug']})
+            if 'category' in self.kwargs:
+                self._category = Category.objects.get(**{slug_field: self.kwargs['category']})
         return self._category
 
     def _get_queryset(self):
@@ -78,12 +78,22 @@ class CategoryPlacesListApi(CategoryMixin, ListView):
     response_class = HttpResponse
 
     def get_context_data(self, **kwargs):
+        # from portugal.models import Region
         context = super(CategoryPlacesListApi, self).get_context_data(**kwargs)
-        # places = [ol.collection_place for ol in context['object_list']]
         narratives = context['object_list']
-        collections = serialize('geojson', narratives, geometry_field='collection_place__mpoly',
+        if not narratives.count():
+            narratives = context['page_obj'].object_list
+        places = [ol.collection_place for ol in narratives]
+        # narr_ids = narratives.values_list('pk', flat=True)
+        collections = serialize('geojson', places,  # Region.objects.filter(collections__pk__in=narr_ids),
+                                geometry_field='mpoly',
                                 use_natural_foreign_keys=True, use_natural_primary_keys=True,
-                                fields=('collection_place__parent__name', 'collection_place__name'))
+                                # fields=('collection_place__parent__name', 'collection_place__name')
+                                )
+        # collections = serialize('geojson', narratives, geometry_field='collection_place__mpoly',
+        #                         use_natural_foreign_keys=True, use_natural_primary_keys=True,
+        #                         # fields=('collection_place__parent__name', 'collection_place__name')
+        #                         )
         return collections
 
     def render_to_response(self, context, **response_kwargs):
@@ -160,20 +170,17 @@ def search(request):
     return render(request, 'lengends/search.html', {'paginator': paginator, 'object_list': object_list})
 
 
-def place(request, initial, pid):
-    kwargs = {'extra_context': {}}
-    if initial in ['p', 'f']:  # its a parish
-        place = Region.objects.get(id=pid)
-        queryset = Narrative.objects.filter(is_public=True, collection_place__parish=place)
-        kwargs['extra_context']['place']
-    # else:  # it's a council
-    #     place = Concelho.objects.get(id=int(pid))
-    #     queryset = Narrative.objects.filter(is_public=True, collection_place__concelho=place)
-    mpolys = [GPolygon(kwargs['extra_context']['place'].mpoly.tuple[0][0], stroke_color="#000000", stroke_weight=1,
-                       fill_color="#666666")]
-    kwargs['extra_context']['map'] = GoogleMap(polygons=mpolys)
-    kwargs['template_object_name'] = 'narrative'
-    tags = list(Tag.objects.usage_for_queryset(queryset, counts=True))
-    kwargs['extra_context']['cloud'] = calculate_cloud(tags, steps=9)
-    return render(request, queryset, kwargs)
+# def place(request, initial, pid):
+#     kwargs = {'extra_context': {}}
+#     if initial in ['p', 'f']:  # its a parish
+#         place = Region.objects.get(id=pid)
+#         queryset = Narrative.objects.filter(is_public=True, collection_place__parish=place)
+#         kwargs['extra_context']['place']
+#     mpolys = [GPolygon(kwargs['extra_context']['place'].mpoly.tuple[0][0], stroke_color="#000000", stroke_weight=1,
+#                        fill_color="#666666")]
+#     kwargs['extra_context']['map'] = GoogleMap(polygons=mpolys)
+#     kwargs['template_object_name'] = 'narrative'
+#     tags = list(Tag.objects.usage_for_queryset(queryset, counts=True))
+#     kwargs['extra_context']['cloud'] = calculate_cloud(tags, steps=9)
+#     return render(request, queryset, kwargs)
 

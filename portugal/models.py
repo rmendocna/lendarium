@@ -82,10 +82,12 @@ class Region(gis_models.Model):
             return self.get_ancestors().first()
         else:
             return self
+    get_distrito.short_description = _('District')
 
+    @property
     def distrito(self):
         return self.get_distrito().name
-    distrito.short_description = _('District')
+    # distrito.short_description = _('District')
 
     @property
     def concelho(self):
@@ -102,8 +104,10 @@ class Region(gis_models.Model):
     def __str__(self):
         if self.parent_id:
             return "%s (%s)" % (self.name, self.parent.name)
+        elif self.name:
+            return self.name
         else:
-            self.name
+            return ''
 
     # @models.permalink
     def get_absolute_url(self):

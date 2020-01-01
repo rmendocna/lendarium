@@ -112,13 +112,14 @@ class Category(MPTTModel, SlugifyMixin, Base):
     slug = TranslatedField(models.SlugField(_('slug'), max_length=53, blank=True))
 
     def __str__(self):
-        the_name = u""
-        if self.parent:
-            the_name = u"%s :: " % self.parent
-        return u"%s%s" % (the_name, self.name)
+        return self.name
+        # the_name = u""
+        # if self.parent:
+        #     the_name = u"%s :: " % self.parent
+        # return u"%s%s" % (the_name, self.name)
 
     def get_absolute_url(self):
-        url = reverse('category-detail', kwargs={'slug': self.slug})
+        url = reverse('category-detail', kwargs={'category': self.slug})
         return url
 
     def save(self, *args, **kwargs):
@@ -151,7 +152,7 @@ class NarrativeManager(models.Manager):
     def get_queryset(self):
         qs = super(NarrativeManager, self).get_queryset()
         return qs.prefetch_related('motifs', 'narrativetype_related', 'citation__authors').select_related(
-            'informant', 'collection_place', 'collection_place__parent', 'collection_place__parent',
+            'informant', 'collection_place',  # 'collection_place__parent',
             'citation', 'citation__city', 'citation__publisher')
 
 

@@ -26,9 +26,6 @@
     }
     #map-box { height: 640px; width: 100% }
 </style>
-<!--link rel="stylesheet" href="//unpkg.com/leaflet@1.6.0/dist/leaflet.css"
-   integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
-   crossorigin=""/-->
 {% endblock %}
 
 {% block menu %}
@@ -45,80 +42,53 @@
 {% block title %}{% firstof category.name search_results %}{% endblock %}
 
 {% block content %}
-    {% if paginator.page %}{{ paginator|pprint }}{% endif %}
-
     {% block subcategories %}{% endblock %}
-<div>
-    <ul class="nav nav-tabs">
-      <li class="nav-item">
-        <a class="nav-link active" id="list-tab" data-toggle="tab" href="#list" role="tab" aria-controls="list" aria-selected="true" href="#">{% trans 'List' %}</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" id="map-tab" data-toggle="tab" href="#map" role="tab" aria-controls="map" aria-selected="true">{% trans 'Map' %}</a>
-      </li>
-        <li class="ml-auto small d-flex flex-row align-content-center">
-
-            {% page_index page_obj %}
+<nav>
+    <div class="nav nav-tabs" role="tablist">
+        <a class="nav-item nav-link active" id="list-tab" data-toggle="tab" href="#list" role="tab" aria-controls="list" aria-selected="true">{% trans 'List' %}</a>
+        <a class="nav-item nav-link" id="map-tab" data-toggle="tab" href="#map" role="tab" aria-controls="map" aria-selected="false">{% trans 'Map' %}</a>
+        <div class="ml-auto small d-flex flex-row align-content-center">
+            {% page_index page_obj style="mb-0" %}
             <form class="input-group ml-2" action="{% if category %}{% url 'search-category' slug=category.slug %}#{% else %}{% url 'search' %}{% endif %}">
                 <input type="text" name="query" {% if request.GET.query|length %} value="{{ request.GET.query }}" {% endif %}class="form-control-sm" placeholder="{% trans 'Search' %}{% if category %} {% trans 'category' %}{% endif %}" aria-label="{% trans 'Search box with button' %}" aria-describedby="button-addon2">
                 <div class="input-group-append">
                     <button class="btn btn-sm btn-outline-secondary" id="button-addon2"><i class="fa fa-search"></i></button>
                 </div>
-            </form></li>
-    </ul>
-    <div class="tab-content">
-        <div class="tab-pane active" id="list">
-
+            </form></div>
+    </div>
+</nav>
+<div class="tab-content">
+    <div class="tab-pane fade show active" id="list" role="tabpanel" aria-labelledby="list-tab">
     {% for narr in object_list %}
-            <div class="mt-4 mb-2">
-                <a class="title" {% if forloop.first %}name="nstart" {% endif%}href="{% url 'narrative-detail' slug=narr.slug category=category.slug %}"><h4>{{ narr.title }} <small class="float-right">APL {{narr.id}}</small></h4></a>
-                <a href="{% url 'narrative-detail' slug=narr.slug category=category.slug %}" class="cite">
-            {% if narr.citation %}{{ narr.citation.pretty_print|safe }}
-            {% if narr.excerpt %}, {{ narr.excerpt }}{% endif %}<br />{% endif %}
-            {% if narr.place %}{{ narr.place }}<br />{% endif %}
-            {% if narr.collection_place %}{{ narr.collection_place }}{% endif %}
-            {% for narratif in narr.narrativemotif_related.all %}
-                {% if forloop.first %}<br /><strong>{% trans "Motifs" %}</strong>: {% endif %}{{ narratif.motif.num }}, {% if forloop.last %}<br />{% endif %}
-            {% endfor %}
-            {% for narratype in narr.narrativetype_related.all %}
-                {% if forloop.first %}<br /><strong>{% trans "Types" %}</strong>: {% endif %} {{ narratype.type.num }}, {% if forloop.last %}<br />{% endif %}
-            {% endfor %}
-                    <cite>{% firstof narr.abstract|safe|truncatewords_html:30 narr.transcription|safe|truncatewords_html:30%}</cite>
-                </a>
-            </div>
+        {% include 'legends/inc_list_item.html' with narr=narr category=category %}
     {% endfor %}
-
-        </div>
-        <div class="tab-pane pt-3" id="map">
-            <div id="map-box"></div>
-        </div>
+    </div>
+    <div class="tab-pane fade pt-3" id="map" role="tabpanel" aria-labelledby="map-tab">
+        <div id="map-box"></div>
     </div>
 </div>
-<div class="nav">{% page_index page_obj style="mt-3 justify-content-center" %}</div>
+<small class="nav mx-auto">{% page_index page_obj style="mt-3 justify-content-center" %}</small>
 {% endblock %}
 
 {% block js %}
     {{ block.super }}
-    <!--script src="//unpkg.com/leaflet@1.6.0/dist/leaflet.js"
-           integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew=="
-           crossorigin=""></script-->
     <script src='//api.mapbox.com/mapbox.js/v3.2.1/mapbox.js'></script>
     <script src="//unpkg.com/axios/dist/axios.min.js"></script>
     <script>
 var map = mapLoaded = placesLayer =  false;
 
 var centroid = [0, 0],
-    mapboxLayer = L.tileLayer(//'//api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
-        '//api.mapbox.com/v4/{id}/{z}/{x}/{y}.jpg70?access_token={accessToken}', {
+    mapboxLayer = L.tileLayer('//api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
+        // '//api.mapbox.com/v4/{id}/{z}/{x}/{y}.jpg70?access_token={accessToken}', {
         attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
         // maxZoom: 13,
-        // id: 'mapbox/streets-v11',
-        id: 'mapbox.satellite',
+        id: 'mapbox/streets-v11',
+        // id: 'mapbox.satellite',
         accessToken: '{{ map_token }}'
     });
 
 $(document).ready(function () {
-    axios.get('{% url "api-category-places" slug=category.slug %}').then(function(response) {
+    axios.get('{% url "api-category-places" category=category.slug %}?page={{ page_obj.number|default:1 }}').then(function(response) {
         placesLayer = L.geoJSON(response.data, {
             style: function (feature) {
                 return {color: feature.properties.color || '#F00'};
@@ -133,17 +103,11 @@ $(document).ready(function () {
             return;
         var bounds = placesLayer.getBounds(),
             centroid = bounds.getCenter();
-            /*
-            mapWidth = $('map-box').width(),
-            mapHeight = 480;
-        var hw = bounds._northEast.lng - bounds._southWest.lng,
-            vh = bounds._northEast.lat - bounds._southWest.lat;
-
-            */
         map = L.map('map-box', {
             center: [centroid.lat, centroid.lng],
-            minZoom: 6,
-            zoom: 9
+            minZoom: 5,
+            zoom: 9,
+            scrollWheelZoom: false
         });
         mapboxLayer.addTo(map);
         placesLayer.addTo(map)

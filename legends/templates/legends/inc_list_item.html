@@ -1,0 +1,22 @@
+{% load i18n %}
+{% firstof category.slug narr.categories.first.slug None as cat %}
+<div class="mt-4 mb-2">
+    <a class="title" {% if forloop.first %}name="nstart" {% endif%}href="{% if cat %}{% url 'narrative-detail' slug=narr.slug category=cat %}{% endif %}"><h4>{{ narr.title }} <small class="float-right">APL {{narr.id}}</small></h4></a>
+    <a href="{% if cat %}{% url 'narrative-detail' slug=narr.slug category=cat %}{% endif %}" class="cite">
+        <small class="d-inline-block p-0 m-0">
+        {% if narr.citation %}{{ narr.citation.pretty_print|safe }}
+        {% if narr.excerpt %}, {{ narr.excerpt }}{% endif %}{% endif %}
+        {% if narr.place or narr.collection_place %} <i class="fa fa-location-arrow"></i>
+            {% if narr.place %} {{ narr.place }} {% endif %}
+            {% if narr.collection_place %} {{ narr.collection_place }} {% endif %}
+        {% endif %}
+        {% for narratif in narr.narrativemotif_related.all %}
+            {% if forloop.first %}<br /><strong>{% trans "Motifs" %}</strong>: {% endif %}{{ narratif.motif.num }}, {% if forloop.last %}<br />{% endif %}
+        {% endfor %}
+        {% for narratype in narr.narrativetype_related.all %}
+            {% if forloop.first %}<br /><strong>{% trans "Types" %}</strong>: {% endif %} {{ narratype.type.num }}, {% if forloop.last %}<br />{% endif %}
+        {% endfor %}
+        </small>
+        <cite class="ml-2">{% firstof narr.abstract|safe|truncatewords_html:30 narr.transcription|safe|truncatewords_html:30%}</cite>
+    </a>
+</div>
