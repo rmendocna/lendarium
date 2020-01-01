@@ -87,7 +87,8 @@ class CategoryPlacesListApi(CategoryMixin, ListView):
         # narr_ids = narratives.values_list('pk', flat=True)
         collections = serialize('geojson', places,  # Region.objects.filter(collections__pk__in=narr_ids),
                                 geometry_field='mpoly',
-                                use_natural_foreign_keys=True, use_natural_primary_keys=True,
+                                # use_natural_foreign_keys=True, use_natural_primary_keys=True,
+                                fields=['pk', 'name']
                                 # fields=('collection_place__parent__name', 'collection_place__name')
                                 )
         # collections = serialize('geojson', narratives, geometry_field='collection_place__mpoly',

@@ -39,7 +39,8 @@
 <li class="breadcrumb-item"><a href="{{ ancestor.get_absolute_url }}">{{ ancestor.name }}</a></li>{% endfor %}
 {% endblock %}
 
-{% block title %}{% firstof category.name search_results %}{% endblock %}
+{% block title %}{% firstof category.name search_results %}
+{% endblock %}
 
 {% block content %}
     {% block subcategories %}{% endblock %}
@@ -75,28 +76,36 @@
     <script src='//api.mapbox.com/mapbox.js/v3.2.1/mapbox.js'></script>
     <script src="//unpkg.com/axios/dist/axios.min.js"></script>
     <script>
-var map = mapLoaded = placesLayer =  false;
+var map = mapLoaded = placesLayer = false;
+
+// '//api.mapbox.com/v4/{id}/{z}/{x}/{y}.jpg70?access_token={accessToken}', {
+// maxZoom: 13,
+// id: 'mapbox.satellite',
 
 var centroid = [0, 0],
     mapboxLayer = L.tileLayer('//api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
-        // '//api.mapbox.com/v4/{id}/{z}/{x}/{y}.jpg70?access_token={accessToken}', {
         attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
-        // maxZoom: 13,
         id: 'mapbox/streets-v11',
-        // id: 'mapbox.satellite',
         accessToken: '{{ map_token }}'
     });
 
-$(document).ready(function () {
-    axios.get('{% url "api-category-places" category=category.slug %}?page={{ page_obj.number|default:1 }}').then(function(response) {
-        placesLayer = L.geoJSON(response.data, {
-            style: function (feature) {
-                return {color: feature.properties.color || '#F00'};
-            }
-        }).bindPopup(function (layer) {
-            return layer.feature.properties.description;
-        })
+
+axios.get('{% url "api-category-places" category=category.slug %}?page={{ page_obj.number|default:1 }}').then(function(response) {
+    placesLayer = L.geoJSON(response.data, {
+        style: function (feature) {
+            return {color: feature.properties.color || '#F00'};
+        },
+        onEachFeature: function (feature, layer) {
+            var id = feature.properties.pk,
+                content = '<h5>' + feature.properties.name + '</h5>';
+            $('.place-' + id).each(function(i, o) {
+                content += o.parentElement.outerHTML + '<br />'
+            })
+            layer.bindPopup(content);
+        }
     })
+})
+$(document).ready(function () {
 
     $('#map-tab').on('shown.bs.tab', function (e) {
         if (mapLoaded)

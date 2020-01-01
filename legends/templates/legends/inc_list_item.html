@@ -1,7 +1,7 @@
 {% load i18n %}
 {% firstof category.slug narr.categories.first.slug None as cat %}
 <div class="mt-4 mb-2">
-    <a class="title" {% if forloop.first %}name="nstart" {% endif%}href="{% if cat %}{% url 'narrative-detail' slug=narr.slug category=cat %}{% endif %}"><h4>{{ narr.title }} <small class="float-right">APL {{narr.id}}</small></h4></a>
+    <a class="title" {% if forloop.first %}name="nstart" {% endif%}href="{% if cat %}{% url 'narrative-detail' slug=narr.slug category=cat %}{% endif %}"><h4 class="place-{{ narr.collection_place_id }}">{{ narr.title }} <small class="float-right">APL {{narr.id}}</small></h4></a>
     <a href="{% if cat %}{% url 'narrative-detail' slug=narr.slug category=cat %}{% endif %}" class="cite">
         <small class="d-inline-block p-0 m-0">
         {% if narr.citation %}{{ narr.citation.pretty_print|safe }}
