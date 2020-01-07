@@ -36,7 +36,8 @@ urlpatterns += [
     path('i18n/', include('django.conf.urls.i18n')),
     path('aplng/', include('legends.langurls')),
     path('search/', search, name='search'),
-    path('places/', include('portugal.urls'))
+    path('places/', include('portugal.urls')),
+    path('biblio/', include('biblio.urls')),
 ]
 
 if settings.DEBUG:

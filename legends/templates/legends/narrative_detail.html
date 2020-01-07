@@ -27,13 +27,14 @@ blockquote {background-color:#FFFFF2; padding: 5px 10px; margin: 5px; border-lef
 {% if place%}<a href="{{place.get_absolute_url}}">Narratives collected at {{place}}</a> \{%endif%}
 {%endif%}{%endblock%}
 {%block content%}
+<p>qwe</p>
 <div style="text-align:right;width:100%; margin-top: -15px;">APL {{narrative.id}}</div>
 {%if narrative.abstract %}<span class="abstract">{{narrative.abstract|safe}}</span>{%endif%}
 <blockquote>
 {{narrative.transcription|safe}}
 </blockquote>
 {%if narrative.audio%}<a href="{{narrative.audio}}">{%trans "Audio Capture"%}</a>{%endif%}
-{%if narrative.citation%}<p class="nt"><span>{% trans 'Source'%}</span>
+{%if narrative.citation %}<p class="nt"><span>{% trans 'Source' %}</span>
 {% with narrative.citation as quote %}{{quote.authorlist}}
   <a href="{% url biblio_detail slug=quote.slug %}"><em>{{ quote.fulltitle }}</em></a>
   {{quote.city}}, {{quote.publisher}}, {{quote.pub_year}}

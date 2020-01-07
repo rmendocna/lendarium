@@ -1,4 +1,6 @@
 {% load i18n %}
+<div class="d-flex justify-space-around">
+    <div>
 <ul class="pagination{% if style %} {{ style }}{% endif %}" aria-label="Page index">
     {% if pg.has_previous %}
     <li class="page-item">
@@ -20,3 +22,12 @@
     </li>
     {% endif %}
 </ul>
+        </div>
+{% if pg %}
+<div class="my-3 mx-2">
+    {% blocktrans with pg_first=pg.start_index pg_last=pg.end_index total=pg.paginator.count %}
+    {{ pg_first }}-{{ pg_last }} of {{ total }}
+    {% endblocktrans %}</div>
+{% endif %}
+</div>
+

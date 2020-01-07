@@ -32,30 +32,33 @@
     {% include 'legends/inc_categories.html' with ancestors=category.get_ancestors categories=categories current_cat=category %}
 {% endblock %}
 
-{% block redirect_to %}{% url 'category-by-id' cid=category.pk %}{% endblock %}
+{% block redirect_to %}{% if category %}{% url 'category-by-id' cid=category.pk %}{% endif %}{% endblock %}
 
 {% block breadcrumb %}
     {% for ancestor in category.get_ancestors %}
 <li class="breadcrumb-item"><a href="{{ ancestor.get_absolute_url }}">{{ ancestor.name }}</a></li>{% endfor %}
 {% endblock %}
 
-{% block title %}{% firstof category.name search_results %}
-{% endblock %}
+{% block title %}{% firstof category.name search_results %}{% endblock %}
 
 {% block content %}
     {% block subcategories %}{% endblock %}
+    {% if object_list|length %}
 <nav>
     <div class="nav nav-tabs" role="tablist">
         <a class="nav-item nav-link active" id="list-tab" data-toggle="tab" href="#list" role="tab" aria-controls="list" aria-selected="true">{% trans 'List' %}</a>
         <a class="nav-item nav-link" id="map-tab" data-toggle="tab" href="#map" role="tab" aria-controls="map" aria-selected="false">{% trans 'Map' %}</a>
-        <div class="ml-auto small d-flex flex-row align-content-center">
+        <div class="ml-auto small d-flex justify-content-between">
             {% page_index page_obj style="mb-0" %}
-            <form class="input-group ml-2" action="{% if category %}{% url 'search-category' slug=category.slug %}#{% else %}{% url 'search' %}{% endif %}">
-                <input type="text" name="query" {% if request.GET.query|length %} value="{{ request.GET.query }}" {% endif %}class="form-control-sm" placeholder="{% trans 'Search' %}{% if category %} {% trans 'category' %}{% endif %}" aria-label="{% trans 'Search box with button' %}" aria-describedby="button-addon2">
-                <div class="input-group-append">
-                    <button class="btn btn-sm btn-outline-secondary" id="button-addon2"><i class="fa fa-search"></i></button>
-                </div>
-            </form></div>
+            <div>
+                <form class="input-group ml-2" action="{% if category %}{% url 'search-category' slug=category.slug %}#{% else %}{% url 'search' %}{% endif %}">
+                    <input type="text" name="query" {% if request.GET.query|length %} value="{{ request.GET.query }}" {% endif %}class="form-control-sm" placeholder="{% trans 'Search' %}{% if category %} {% trans 'category' %}{% endif %}" aria-label="{% trans 'Search box with button' %}" aria-describedby="button-addon2">
+                    <div class="input-group-append">
+                        <button class="btn btn-sm btn-outline-secondary" id="button-addon2"><i class="fa fa-search"></i></button>
+                    </div>
+                </form>
+            </div>
+        </div>
     </div>
 </nav>
 <div class="tab-content">
@@ -69,10 +72,12 @@
     </div>
 </div>
 <small class="nav mx-auto">{% page_index page_obj style="mt-3 justify-content-center" %}</small>
+    {% endif %}
 {% endblock %}
 
 {% block js %}
     {{ block.super }}
+    {% if category %}
     <script src='//api.mapbox.com/mapbox.js/v3.2.1/mapbox.js'></script>
     <script src="//unpkg.com/axios/dist/axios.min.js"></script>
     <script>
@@ -89,7 +94,6 @@ var centroid = [0, 0],
         accessToken: '{{ map_token }}'
     });
 
-
 axios.get('{% url "api-category-places" category=category.slug %}?page={{ page_obj.number|default:1 }}').then(function(response) {
     placesLayer = L.geoJSON(response.data, {
         style: function (feature) {
@@ -105,6 +109,7 @@ axios.get('{% url "api-category-places" category=category.slug %}?page={{ page_o
         }
     })
 })
+
 $(document).ready(function () {
 
     $('#map-tab').on('shown.bs.tab', function (e) {
@@ -125,4 +130,5 @@ $(document).ready(function () {
     })
 })
     </script>
+    {% endif %}
 {% endblock %}

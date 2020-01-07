@@ -149,7 +149,7 @@ class Volume(models.Model):
 
     # @revision.create_on_success
     def save(self, *args, **kwargs):
-        if self.type in ['COLLECTION','JOURNAL']:
+        if self.type in ['COLLECTION', 'JOURNAL']:
             self.is_collection = True
         # revision.user = threadlocals.get_current_user()
         super(Volume, self).save(*args, **kwargs)

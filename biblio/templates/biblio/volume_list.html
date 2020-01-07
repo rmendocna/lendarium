@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% load i18n legends %}
+
+{% block title %}{% trans 'Bibliography' %}{% endblock %}
+
+{% block content %}
+    {% block subcategories %}{% endblock %}
+
+<div class="ml-auto small d-flex flex-row justify-content-between">
+    {% page_index page_obj style="mb-0" %}
+    <div>
+        <form class="input-group ml-2" action="{% if category %}{% url 'search-category' slug=category.slug %}#{% else %}{% url 'search' %}{% endif %}">
+            <input type="text" name="query" {% if request.GET.query|length %} value="{{ request.GET.query }}" {% endif %}class="form-control-sm" placeholder="{% trans 'Search' %}{% if category %} {% trans 'category' %}{% endif %}" aria-label="{% trans 'Search box with button' %}" aria-describedby="button-addon2">
+            <div class="input-group-append">
+                <button class="btn btn-sm btn-outline-secondary" id="button-addon2"><i class="fa fa-search"></i></button>
+            </div>
+        </form>
+    </div>
+</div>
+{% for volume in object_list %}
+    <p><a href="{% url 'volume' vid=volume.pk %}">{{ volume }}</a></p>
+
+{% endfor %}
+
+<small class="nav mx-auto">{% page_index page_obj style="mt-3 justify-content-center" %}</small>
+{% endblock %}

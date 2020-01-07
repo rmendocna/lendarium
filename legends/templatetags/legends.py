@@ -22,7 +22,7 @@ def page_index(page_obj, style=""):
                 if end - 2 > nxt + 1:
                     idx += ['..']
                 idx += [i for i in range(max(nxt+1, end-2), end)]
-    return {'idx': idx, 'pg': page_obj, 'style': style}
+    return {'idx': idx, 'pg': page_obj, 'style': style }
 
 
 t = get_template('legends/inc_page_index.html')

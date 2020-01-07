@@ -28,9 +28,9 @@
 </div>
     {% if narrative.audio %}<a href="{{ narrative.audio }}">{% trans "Audio Capture" %}</a>{% endif %}
 <dl class="container-fluid row">
-    {% if narrative.citation%}<dt class="col-sm-2">{% trans 'Source'%}</dt><dd class="col-sm-10">
+    {% if narrative.citation %}<dt class="col-sm-2">{% trans 'Source'%}</dt><dd class="col-sm-10">
         {% with narrative.citation as quote %}{{quote.authorlist}}
-  <a href="{# url biblio_detail slug=quote.slug #}"><em>{{ quote.fulltitle }}</em></a>
+  <a href="{% url 'volume' vid=quote.pk %}"><em>{{ quote.fulltitle }}</em></a>
           {{quote.city}}, {{quote.publisher}}, {{quote.pub_year}}
           {% if quote.original_year %} [{{quote.original_year}}]{%endif%}
         {% endwith %}

@@ -14,9 +14,7 @@
 <li class="breadcrumb-item"><a href="{{ ancestor.get_absolute_url }}">{{ ancestor.name }}</a></li>{% endfor %}
 {% endblock %}
 
-{% block title %}{{ category.name }}
-<small class="badge ml-auto text-muted">{% if page_obj.has_other_pages %} {{ object_list|length }} /{{ page_obj.paginator.count }}{% else %}#{{ object_list|length }} {% endif %}</small>
-{% endblock %}
+{% block title %}{{ category.name }} {% endblock %}
 
 {% block subcategories %}
     {% if category.get_children.exists %}
