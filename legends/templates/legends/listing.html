@@ -43,18 +43,21 @@
 
 {% block content %}
     {% block subcategories %}{% endblock %}
-    {% if object_list|length %}
+    {% if object_list|length or is_search %}
 <nav>
     <div class="nav nav-tabs" role="tablist">
         <a class="nav-item nav-link active" id="list-tab" data-toggle="tab" href="#list" role="tab" aria-controls="list" aria-selected="true">{% trans 'List' %}</a>
+        {% if object_list|length %}
         <a class="nav-item nav-link" id="map-tab" data-toggle="tab" href="#map" role="tab" aria-controls="map" aria-selected="false">{% trans 'Map' %}</a>
+        {% endif %}
         <div class="ml-auto small d-flex justify-content-between">
             {% page_index page_obj style="mb-0" %}
             <div>
-                <form class="input-group ml-2" action="{% if category %}{% url 'search-category' slug=category.slug %}#{% else %}{% url 'search' %}{% endif %}">
+                <form class="input-group ml-2" action="{% if category %}{% url 'search-category' category=category.slug %}#{% else %}{% url 'search' %}{% endif %}">
                     <input type="text" name="query" {% if request.GET.query|length %} value="{{ request.GET.query }}" {% endif %}class="form-control-sm" placeholder="{% trans 'Search' %}{% if category %} {% trans 'category' %}{% endif %}" aria-label="{% trans 'Search box with button' %}" aria-describedby="button-addon2">
                     <div class="input-group-append">
                         <button class="btn btn-sm btn-outline-secondary" id="button-addon2"><i class="fa fa-search"></i></button>
+                        {% if is_search %}<a href=".." class="btn btn-sm btn-outline-danger" title="{% trans 'show all' %}"><i class="fa fa-times"></i></a>{% endif %}
                     </div>
                 </form>
             </div>
@@ -65,6 +68,13 @@
     <div class="tab-pane fade show active" id="list" role="tabpanel" aria-labelledby="list-tab">
     {% for narr in object_list %}
         {% include 'legends/inc_list_item.html' with narr=narr category=category %}
+    {% empty %}
+        {% if is_search %}
+            {% blocktrans with qry=request.GET.query %}
+        <h3 class="m-3">No results found for search term '<i>{{ qry }}</i>'</h3>
+        <a href="..">Show all</a>
+            {% endblocktrans %}
+        {% endif %}
     {% endfor %}
     </div>
     <div class="tab-pane fade pt-3" id="map" role="tabpanel" aria-labelledby="map-tab">
@@ -74,6 +84,16 @@
 <small class="nav mx-auto">{% page_index page_obj style="mt-3 justify-content-center" %}</small>
     {% endif %}
 {% endblock %}
+
+{% block sidebar %}
+    {% if cloud|length %}
+    <div class="d-none d-xl-block col-xl-2 bd-toc">
+        {% for t in cloud %}
+            <a href="{% url 'tag-detail' tid=t.id %}" style="font-size: 1{{ t.font_size }}0%">{{ t.name }}<sup>({{ t.count }})</sup> </a> {% endfor %}
+    </div>
+    {% endif %}
+{% endblock %}
+
 
 {% block js %}
     {{ block.super }}

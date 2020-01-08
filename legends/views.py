@@ -1,6 +1,7 @@
 # import json
 
 from django.conf import settings
+from django.contrib.contenttypes.models import ContentType
 from django.contrib.postgres.search import SearchQuery, SearchRank, SearchVector
 from django.core.paginator import Paginator
 from django.core.serializers import serialize
@@ -9,6 +10,9 @@ from django.shortcuts import redirect, render
 from django.utils.translation import get_language
 from django.views.generic.detail import DetailView
 from django.views.generic.list import ListView
+
+from tagging.models import Tag
+from tagging.utils import calculate_cloud
 
 from .models import Narrative, Category
 
@@ -23,18 +27,26 @@ PAGE_ITEMS = 30
 
 class LangMixin:
 
+    paginate_by = PAGE_ITEMS
+    _lang = None
+
     def get_lang_field(self, field_name):
         if not self._lang:
             self._lang = get_language()
         return '{}_{}'.format(field_name, self._lang)
 
 
-class CategoryMixin(LangMixin):
+class ListMixin(LangMixin):
+
+    def _get_queryset(self):
+        return super(CategoryMixin, self).get_queryset().select_related('collection_place'
+                                                                        ).prefetch_related('many_places')
+
+
+class CategoryMixin(ListMixin):
 
     _category = None
-    _lang = None
     model = Narrative
-    paginate_by = PAGE_ITEMS
 
     @property
     def category(self):
@@ -43,10 +55,6 @@ class CategoryMixin(LangMixin):
             if 'category' in self.kwargs:
                 self._category = Category.objects.get(**{slug_field: self.kwargs['category']})
         return self._category
-
-    def _get_queryset(self):
-        return super(CategoryMixin, self).get_queryset().select_related('collection_place'
-                                                                        ).prefetch_related('many_places')
 
     def get_queryset(self):
         qs = self._get_queryset()
@@ -66,10 +74,43 @@ class NarrativeListView(CategoryMixin, ListView):
 
     def get_context_data(self, **kwargs):
         context = super(NarrativeListView, self).get_context_data(**kwargs)
+        if context['object_list'].count() > 0:
+            tags = list(Tag.objects.usage_for_queryset(context['object_list'], counts=True, min_count=2))
+        else:
+            tags = []
         context.update(dict(
             categories=Category.objects.filter(parent__isnull=True),
             map_token=settings.MAPBOX_TOKEN,
+            cloud=calculate_cloud(tags, steps=9),
         ))
+        return context
+
+
+class NarrativeListTag(ListMixin, DetailView):
+
+    template_name = 'legends/listing.html'
+    model = Tag
+    pk_url_kwarg = 'tid'
+    _page = 1
+
+    def get(self, request, *args, **kwargs):
+        if 'page' in request.GET:
+            self._page = int(request.GET['page'])
+        return super(NarrativeListTag, self).get(request, *args, **kwargs)
+
+    def get_context_data(self, **kwargs):
+        context = super(NarrativeListTag, self).get_context_data(**kwargs)
+        tid = self.kwargs['tid']
+        ct = ContentType.objects.get(model='narrative')
+        tagged_objects_ids = Tag.objects.get(id=tid).items.filter(content_type=ct).values_list('object_id', flat=True)
+        legends = self._get_queryset().filter(id__in=tagged_objects_ids)
+        if legends.exists():
+            paginator = Paginator(legends, PAGE_ITEMS)
+            page = paginator.get_page(self._page)
+            context.update(dict(
+                object_list=page.object_list,
+                page_obj=page,
+            ))
         return context
 
 
@@ -109,11 +150,18 @@ class SearchView(NarrativeListView):
 
     def get_queryset(self):
         query = SearchQuery(self.request.GET['query'])
-        vector = SearchVector('title', self.get_lang_field('keywords'), self.get_lang_field('common_title'))
+        vector = SearchVector('title', 'transcription', self.get_lang_field('keywords'),
+                              self.get_lang_field('common_title'))
         qs = super(SearchView, self)._get_queryset()
         categories = self.category.get_descendants(include_self=True)
-        return qs.filter(narrativecategory_related__legendcategory_id__in=categories.values_list('id', flat=True)
-                         ).annotate(rank=SearchRank(vector, query))
+        results = qs.filter(narrativecategory_related__legendcategory_id__in=categories.values_list('id', flat=True)
+                            ).annotate(rank=SearchRank(vector, query)).filter(rank__gt=0.0).order_by('-rank')
+        return results
+
+    def get_context_data(self, **kwargs):
+        context = super(SearchView, self).get_context_data(**kwargs)
+        context['is_search'] = True
+        return context
 
 
 class NarrativeView(LangMixin, DetailView):
@@ -126,7 +174,7 @@ class NarrativeView(LangMixin, DetailView):
         return 'slug_{}'.format(lang)
 
     def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
+        context = super(NarrativeView, self).get_context_data(**kwargs)
         category_slug = self.kwargs.get('category', '')
         if not category_slug:
             category = context['object'].categories.first()
