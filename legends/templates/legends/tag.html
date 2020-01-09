@@ -1,0 +1,16 @@
+{% extends 'legends/listing.html' %}
+{% load i18n legends %}
+
+{% block head_title %}{{ block.super }} {% trans 'Keyword' %}: {{ tag }}{% endblock %}
+
+{% block menu %}{% endblock %}
+
+{% block redirect_to %}{# url 'category-by-id' cid=category.pk #}{% endblock %}
+
+{% block breadcrumb %}
+    <li class="breadcrumb-item">{% trans 'Keywords' %}</a></li>
+    <li class="breadcrumb-item">{{ tag }}</a></li>
+{% endblock %}
+
+{% block title %}{% trans 'Keyword' %}: {{ tag }} {% endblock %}
+

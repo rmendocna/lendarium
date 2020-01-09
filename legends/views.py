@@ -1,7 +1,4 @@
-# import json
-
 from django.conf import settings
-from django.contrib.contenttypes.models import ContentType
 from django.contrib.postgres.search import SearchQuery, SearchRank, SearchVector
 from django.core.paginator import Paginator
 from django.core.serializers import serialize
@@ -25,9 +22,8 @@ def old_category_redirect(request, id, page=1):
 PAGE_ITEMS = 30
 
 
-class LangMixin:
+class LangMixin(object):
 
-    paginate_by = PAGE_ITEMS
     _lang = None
 
     def get_lang_field(self, field_name):
@@ -38,8 +34,10 @@ class LangMixin:
 
 class ListMixin(LangMixin):
 
+    paginate_by = PAGE_ITEMS
+
     def _get_queryset(self):
-        return super(CategoryMixin, self).get_queryset().select_related('collection_place'
+        return super(ListMixin, self).get_queryset().select_related('collection_place'
                                                                         ).prefetch_related('many_places')
 
 
@@ -88,7 +86,7 @@ class NarrativeListView(CategoryMixin, ListView):
 
 class NarrativeListTag(ListMixin, DetailView):
 
-    template_name = 'legends/listing.html'
+    template_name = 'legends/tag.html'
     model = Tag
     pk_url_kwarg = 'tid'
     _page = 1
@@ -100,48 +98,49 @@ class NarrativeListTag(ListMixin, DetailView):
 
     def get_context_data(self, **kwargs):
         context = super(NarrativeListTag, self).get_context_data(**kwargs)
-        tid = self.kwargs['tid']
-        ct = ContentType.objects.get(model='narrative')
-        tagged_objects_ids = Tag.objects.get(id=tid).items.filter(content_type=ct).values_list('object_id', flat=True)
-        legends = self._get_queryset().filter(id__in=tagged_objects_ids)
-        if legends.exists():
-            paginator = Paginator(legends, PAGE_ITEMS)
+        if context['object']:
+            paginator = Paginator(context['object'].items.all(), PAGE_ITEMS)
             page = paginator.get_page(self._page)
             context.update(dict(
-                object_list=page.object_list,
+                object_list=[taggeditem.object for taggeditem in page.object_list],
+                map_token=settings.MAPBOX_TOKEN,
                 page_obj=page,
             ))
         return context
 
 
-class CategoryPlacesListApi(CategoryMixin, ListView):
+class JSONListView(ListView):
 
     response_class = HttpResponse
 
     def get_context_data(self, **kwargs):
-        # from portugal.models import Region
-        context = super(CategoryPlacesListApi, self).get_context_data(**kwargs)
+        context = super(JSONListView, self).get_context_data(**kwargs)
         narratives = context['object_list']
         if not narratives.count():
             narratives = context['page_obj'].object_list
         places = [ol.collection_place for ol in narratives]
-        # narr_ids = narratives.values_list('pk', flat=True)
-        collections = serialize('geojson', places,  # Region.objects.filter(collections__pk__in=narr_ids),
-                                geometry_field='mpoly',
-                                # use_natural_foreign_keys=True, use_natural_primary_keys=True,
-                                fields=['pk', 'name']
-                                # fields=('collection_place__parent__name', 'collection_place__name')
-                                )
-        # collections = serialize('geojson', narratives, geometry_field='collection_place__mpoly',
-        #                         use_natural_foreign_keys=True, use_natural_primary_keys=True,
-        #                         # fields=('collection_place__parent__name', 'collection_place__name')
-        #                         )
+        collections = serialize('geojson', places, geometry_field='mpoly', fields=['pk', 'name'])
         return collections
 
     def render_to_response(self, context, **response_kwargs):
         kwargs = response_kwargs or {}
         kwargs.update(dict(content_type='application/json'))
         return self.response_class(context, **kwargs)
+
+
+class CategoryPlacesListApi(CategoryMixin, JSONListView):
+
+    pass
+
+
+class PlacesListApi(JSONListView):
+
+    model = Narrative
+
+    def get_queryset(self):
+        qs = super(PlacesListApi, self).get_queryset()
+        ids = self.request.GET.get('ids', '').split('.')
+        return qs.filter(pk__in=ids)
 
 
 class SearchView(NarrativeListView):

@@ -39,7 +39,7 @@
 <li class="breadcrumb-item"><a href="{{ ancestor.get_absolute_url }}">{{ ancestor.name }}</a></li>{% endfor %}
 {% endblock %}
 
-{% block title %}{% firstof category.name search_results %}{% endblock %}
+{% block title %}{% firstof category.name search_results tag %}{% endblock %}
 
 {% block content %}
     {% block subcategories %}{% endblock %}
@@ -97,11 +97,12 @@
 
 {% block js %}
     {{ block.super }}
-    {% if category %}
+    {% if category or tag %}
     <script src='//api.mapbox.com/mapbox.js/v3.2.1/mapbox.js'></script>
     <script src="//unpkg.com/axios/dist/axios.min.js"></script>
     <script>
 var map = mapLoaded = placesLayer = false;
+var ids = [];
 
 // '//api.mapbox.com/v4/{id}/{z}/{x}/{y}.jpg70?access_token={accessToken}', {
 // maxZoom: 13,
@@ -114,7 +115,7 @@ var centroid = [0, 0],
         accessToken: '{{ map_token }}'
     });
 
-axios.get('{% url "api-category-places" category=category.slug %}?page={{ page_obj.number|default:1 }}').then(function(response) {
+axios.get('{% url "api-places" %}?ids={% for o in object_list %}{{ o.pk}}{% if not forloop.last %}.{% endif %}{% endfor %}').then(function(response) {
     placesLayer = L.geoJSON(response.data, {
         style: function (feature) {
             return {color: feature.properties.color || '#F00'};
