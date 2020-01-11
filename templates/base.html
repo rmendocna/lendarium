@@ -50,11 +50,11 @@
           <div class="row flex-xl-nowrap">
               <div class="col-12 mt-1 mt-md-5 mt-md-5 pt-md-3 col-md-3 col-xl-2 bd-sidebar">
                   <nav class="collapse bd-links" id="bd-docs-nav">
-                      <form class="input-group mt-md-5 mb-3" method="post" action="/search/">
+                      <form class="input-group mt-md-5 mb-3 pr-2" method="post" style="opacity: .8" action="/search/">
                           {% csrf_token %}
                           <input type="text" class="form-control" placeholder="{% trans 'Search' %}" aria-label="Search box with button" aria-describedby="button-addon1">
                           <div class="input-group-append">
-                            <button class="btn btn-outline-secondary" id="button-addon1"><i class="fa fa-search"></i></button>
+                            <button class="btn btn-outline-light" id="button-addon1"><i class="fa fa-search"></i></button>
                           </div>
                       </form>
                       <div class="bd-toc-item">

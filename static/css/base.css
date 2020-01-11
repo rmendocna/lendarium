@@ -22,7 +22,7 @@ main > h1 { margin-bottom: 2rem }
 .breadcrumb a:hover { color: #EED; text-shadow: none}
 .breadcrumb-item+.breadcrumb-item::before { color: #EED; content: "::" }
 .separador{ padding-bottom:5px; border-bottom:1px #666 solid; text-align:right; }
-.content { background-color:#F7F7EE; padding: 1.5rem; border-radius: 1rem; }
+.content { background-color:#F7F7EE; padding: 1.5rem; border-radius: 1rem;}
 .bd-sidebar {
     -ms-flex-order: 0;
     order: 0;
@@ -93,13 +93,16 @@ small.badge { color: inherit; text-shadow: none; font-weight: 300; background-co
     letter-spacing: .045rem;
     font-weight: 400
 }
+.nav.bd-sidenav li .nav.bd-sidenav li a.active {
+    background-color: #F7F7EE;
+    -webkit-border-top-left-radius: 5px;
+    -webkit-border-bottom-left-radius: 5px;
+    -moz-border-radius-topleft: 5px;
+    -moz-border-radius-bottomleft: 5px;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+}
 .navbar.fixed-top {
-/*
-    background-color: transparent;
-    background-position: center top;
-    background-attachment: fixed;
-    background-repeat: no-repeat;
-    */
     background:
         linear-gradient(rgba(173, 159, 114, .9), rgba(173, 159, 114, 0.0), rgba(255, 255, 255, 0.0)),
         transparent url(../img/btop.png) repeat-x fixed center top ;
@@ -114,6 +117,7 @@ small.badge { color: inherit; text-shadow: none; font-weight: 300; background-co
     .bd-content {
         margin-top: -3rem
     }
+    .content { min-height: 500px}
     .bd-toc-item {
         max-height: calc(100vh - 15rem);
         display: block!important;
@@ -130,6 +134,8 @@ small.badge { color: inherit; text-shadow: none; font-weight: 300; background-co
         top: 4rem;
         z-index: 1000;
         height: calc(100vh - 4rem);
+        padding-right: 15px;
+        margin-right: -15px;
     }
     .bd-navbar {
         position: -webkit-sticky;
@@ -144,8 +150,19 @@ small.badge { color: inherit; text-shadow: none; font-weight: 300; background-co
         display: block
     }
 
-    .nav.bd-sidenav li a:hover, .nav.bd-sidenav li a.active {
+    .nav.bd-sidenav li a:hover /* , .nav.bd-sidenav li a.active */ {
         background-color: #9D8F62;
+    }
+    .nav.bd-sidenav li a.active  {
+        background-color: #e0e0d0;
+        color:#9A3503;
+        text-shadow: none;
+        -webkit-border-top-left-radius: 5px;
+        -webkit-border-bottom-left-radius: 5px;
+        -moz-border-radius-topleft: 5px;
+        -moz-border-radius-bottomleft: 5px;
+        border-top-left-radius: 5px;
+        border-bottom-left-radius: 5px;
     }
    .bd-links {
         display: block!important;

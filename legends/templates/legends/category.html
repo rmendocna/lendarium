@@ -14,11 +14,11 @@
 <li class="breadcrumb-item"><a href="{{ ancestor.get_absolute_url }}">{{ ancestor.name }}</a></li>{% endfor %}
 {% endblock %}
 
-{% block title %}{{ category.name }} {% endblock %}
+{% block title %}<span class="text-muted">{% trans 'Category' %}:</span> {{ category.name }} {% endblock %}
 
 {% block subcategories %}
     {% if category.get_children.exists %}
-        {% with narrs=object_list.count %}
+        {% with narrs=object_list.count %}<p>
             {% if narrs > 0 %}
                 {% blocktrans count cats=category.get_children.count %}
 There is {{ cats }} subcategory and <a href="#nstart">{{ narrs }} narratives</a>
@@ -32,7 +32,7 @@ There is {{ cats }} subcategory
 There are {{ cats }} subcategories
                 {% endblocktrans %}
             {% endif %}
-        {% endwith%}
+        </p>{% endwith%}
 <div class="list-group">
         {% for subcat in category.get_children %}
     <a class="list-group-item" href="{{ subcat.get_absolute_url }}">{{ subcat }} {% if  subcat.get_descendant_count %}({{ subcat.get_descendant_count }}){% endif %} <span class="badge">{{ subcat.narrative_categories.count }}</span></a>

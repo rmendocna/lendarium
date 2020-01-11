@@ -43,25 +43,26 @@
 
 {% block content %}
     {% block subcategories %}{% endblock %}
+
     {% if object_list|length or is_search %}
+<div class="ml-auto small d-flex flex-wrap justify-content-between">
+        {% page_index page_obj style="mb-0" %}
+    <div>
+        <form class="input-group ml-2" action="{% if category %}{% url 'search-category' category=category.slug %}#{% else %}{% url 'search' %}{% endif %}">
+            <input type="text" name="query" {% if request.GET.query|length %} value="{{ request.GET.query }}" {% endif %}class="form-control-sm" placeholder="{% trans 'Search' %}{% if category %} {% trans 'category' %}{% endif %}" aria-label="{% trans 'Search box with button' %}" aria-describedby="button-addon2">
+            <div class="input-group-append">
+                <button class="btn btn-sm btn-outline-secondary" id="button-addon2"><i class="fa fa-search"></i></button>
+                {% if is_search %}<a href=".." class="btn btn-sm btn-outline-danger" title="{% trans 'show all' %}"><i class="fa fa-times"></i></a>{% endif %}
+            </div>
+        </form>
+    </div>
+</div>
 <nav>
     <div class="nav nav-tabs" role="tablist">
         <a class="nav-item nav-link active" id="list-tab" data-toggle="tab" href="#list" role="tab" aria-controls="list" aria-selected="true">{% trans 'List' %}</a>
         {% if object_list|length %}
         <a class="nav-item nav-link" id="map-tab" data-toggle="tab" href="#map" role="tab" aria-controls="map" aria-selected="false">{% trans 'Map' %}</a>
         {% endif %}
-        <div class="ml-auto small d-flex justify-content-between">
-            {% page_index page_obj style="mb-0" %}
-            <div>
-                <form class="input-group ml-2" action="{% if category %}{% url 'search-category' category=category.slug %}#{% else %}{% url 'search' %}{% endif %}">
-                    <input type="text" name="query" {% if request.GET.query|length %} value="{{ request.GET.query }}" {% endif %}class="form-control-sm" placeholder="{% trans 'Search' %}{% if category %} {% trans 'category' %}{% endif %}" aria-label="{% trans 'Search box with button' %}" aria-describedby="button-addon2">
-                    <div class="input-group-append">
-                        <button class="btn btn-sm btn-outline-secondary" id="button-addon2"><i class="fa fa-search"></i></button>
-                        {% if is_search %}<a href=".." class="btn btn-sm btn-outline-danger" title="{% trans 'show all' %}"><i class="fa fa-times"></i></a>{% endif %}
-                    </div>
-                </form>
-            </div>
-        </div>
     </div>
 </nav>
 <div class="tab-content">
