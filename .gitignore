@@ -133,6 +133,7 @@ dmypy.json
 
 .idea/
 localsettings.py
+manage.py
 
 .DS_Store
 nltk_data
