@@ -150,7 +150,7 @@ class SearchView(NarrativeListView):
         query = SearchQuery(self.request.GET['query'])
         vector = SearchVector('title', 'transcription', self.get_lang_field('keywords'),
                               self.get_lang_field('common_title'))
-        qs = super(SearchView, self)._get_queryset()
+        qs = self._get_queryset()
         categories = self.category.get_descendants(include_self=True)
         results = qs.filter(narrativecategory_related__legendcategory_id__in=categories.values_list('id', flat=True)
                             ).annotate(rank=SearchRank(vector, query)).filter(rank__gt=0.0).order_by('-rank')
@@ -158,7 +158,10 @@ class SearchView(NarrativeListView):
 
     def get_context_data(self, **kwargs):
         context = super(SearchView, self).get_context_data(**kwargs)
-        context['is_search'] = True
+        context.update(dict(
+            is_search=True,
+            map_token=settings.MAPBOX_TOKEN,
+        ))
         return context
 
 
@@ -166,30 +169,22 @@ class SearchAllView(LangMixin, ListView):
 
     model = Narrative
     template_name = 'legends/search.html'
-    search_keys = ('title', 'keywords')
-    search_query = None
     paginate_by = PAGE_ITEMS
 
-    def post(self, request, *args, **kwargs):
-        self.search_keys = ('title', 'transcription', self.get_lang_field('keywords'),
-                            self.get_lang_field('common_title'))
-        self.search_query = SearchQuery(request.POST['query'])
-        return super(SearchAllView, self).get(request, *args, **kwargs)
-
-    def get(self, request, *args, **kwargs):
-        self.search_keys = ('title', self.get_lang_field('keywords'), self.get_lang_field('common_title'))
-        self.search_query = SearchQuery(request.GET['query'])
-        return super(SearchAllView, self).get(request, *args, **kwargs)
-
     def get_queryset(self):
-        vector = SearchVector(*self.search_keys)
+        query = SearchQuery(self.request.GET['query'])
+        vector = SearchVector('title',  'transcription', self.get_lang_field('keywords'),
+                              self.get_lang_field('common_title'))
         qs = super(SearchAllView, self).get_queryset().defer('rating', 'notes', 'other')
-        results = qs.annotate(rank=SearchRank(vector, self.search_query)).filter(rank__gt=0.0).order_by('-rank')
+        results = qs.annotate(rank=SearchRank(vector, query)).filter(rank__gt=0.0).order_by('-rank')
         return results
 
     def get_context_data(self, **kwargs):
         context = super(SearchAllView, self).get_context_data(**kwargs)
-        context['is_search'] = True
+        context.update(dict(
+            is_search=True,
+            map_token=settings.MAPBOX_TOKEN,
+        ))
         return context
 
 

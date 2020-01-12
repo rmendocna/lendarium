@@ -22,4 +22,9 @@ def page_index(context, page_obj, style=""):
                 if end - 2 > nxt + 1:
                     idx += ['..']
                 idx += [i for i in range(max(nxt+1, end-2), end)]
-    return {'idx': idx, 'pg': page_obj, 'style': style, 'query': context['request'].GET.get('query', None)}
+    if context['request'].method == 'POST':
+        query = context['request'].POST.get('query', None)
+    else:
+        query = context['request'].GET.get('query', None)
+
+    return {'idx': idx, 'pg': page_obj, 'style': style, 'query': query}

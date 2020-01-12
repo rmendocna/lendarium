@@ -10,4 +10,5 @@ django-select2
 nltk
 psycopg2==2.8.2
 django-debug-toolbar>=-2.1,<3.0
+python-memcached>=1.13.0,<1.14.0
 bs4

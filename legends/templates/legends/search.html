@@ -8,6 +8,7 @@
 {% block redirect_to %}{% endblock %}
 
 {% block title %}{% if category %}<a href="{% url 'category-detail' category=category.slug %}">
-    <span class="text-muted">{% trans 'Category' %}:</span> {{ category.name }} </a>
-        {% else %} {% trans 'Search Results' %}{% endif %}
+    <span class="text-muted">{% trans 'Category' %}:</span> {{ category.name }} </a>{% else %}
+        {% blocktrans with expression=request.GET.query %}Search Results for `{{ expression }}`{% endblocktrans %}
+    {% endif %}
 {% endblock %}

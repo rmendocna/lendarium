@@ -56,6 +56,10 @@ INSTALLED_APPS = [
     'django_select2',
 ]
 
+ROSETTA_LOGIN_URL = '/admin/login'
+ROSETTA_SHOW_AT_ADMIN_PANEL = True
+
+
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',

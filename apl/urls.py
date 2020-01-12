@@ -17,28 +17,28 @@ from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib import admin
 from django.conf.urls.i18n import i18n_patterns
-from django.urls import path, re_path, include
+from django.urls import path, include
 
 from content.views import index
+
 
 urlpatterns = i18n_patterns(
     # re_path(r'^select2/', include('django_select2.urls')),
     path('admin/', admin.site.urls),
-    re_path(r'^$', index, name="index"),
-    re_path('^apl/', include('legends.urls')),
-    re_path(r'^rosetta/', include('rosetta.urls')),
+    path('', index, name="index"),
+    path('apl/', include('legends.urls')),
+    path('places/', include('portugal.urls')),
+    path('biblio/', include('biblio.urls')),
 )
-
-urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 
 urlpatterns += [
     path('i18n/', include('django.conf.urls.i18n')),
     path('aplng/', include('legends.langurls')),
-    path('places/', include('portugal.urls')),
-    path('biblio/', include('biblio.urls')),
+    path('rosetta/', include('rosetta.urls')),
 ]
 
 if settings.DEBUG:
+    urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
     import debug_toolbar
     urlpatterns = [
         path('__debug__/', include(debug_toolbar.urls)),

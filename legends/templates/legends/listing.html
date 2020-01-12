@@ -46,7 +46,8 @@
 
     {% if object_list|length or is_search %}
 <div class="ml-auto small d-flex flex-wrap justify-content-between">
-        {% page_index page_obj style="mb-0" %}
+        {% page_index page_obj style="m-2" %}
+        {% if category %}
     <div>
         <form class="input-group ml-2" action="{% if category %}{% url 'search-category' category=category.slug %}#{% else %}{% url 'search' %}{% endif %}">
             <input type="text" name="query" {% if request.GET.query|length %} value="{{ request.GET.query }}" {% endif %}class="form-control-sm" placeholder="{% trans 'Search' %}{% if category %} {% trans 'category' %}{% endif %}" aria-label="{% trans 'Search box with button' %}" aria-describedby="button-addon2">
@@ -56,6 +57,7 @@
             </div>
         </form>
     </div>
+        {% endif %}
 </div>
 <nav>
     <div class="nav nav-tabs" role="tablist">
@@ -73,8 +75,12 @@
         {% if is_search %}
             {% blocktrans with qry=request.GET.query %}
         <h3 class="m-3">No results found for search term '<i>{{ qry }}</i>'</h3>
-        <a href="..">Show all</a>
             {% endblocktrans %}
+            {% if category %}
+        <a href="..">{% trans 'Show all' %}</a>
+            {% else %}
+        <a href="javascript:window.history.back()">{% trans 'Back' %}</a>
+            {% endif %}
         {% endif %}
     {% endfor %}
     </div>
@@ -82,7 +88,7 @@
         <div id="map-box"></div>
     </div>
 </div>
-<small class="nav mx-auto">{% page_index page_obj style="mt-3 justify-content-center" %}</small>
+<small class="nav mx-auto">{% page_index page_obj style="m-2 justify-content-center" %}</small>
     {% endif %}
 {% endblock %}
 
@@ -98,7 +104,7 @@
 
 {% block js %}
     {{ block.super }}
-    {% if category or tag %}
+    {% if category or tag or is_search %}
     <script src='//api.mapbox.com/mapbox.js/v3.2.1/mapbox.js'></script>
     <script src="//unpkg.com/axios/dist/axios.min.js"></script>
     <script>

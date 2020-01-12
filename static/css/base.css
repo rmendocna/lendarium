@@ -69,7 +69,7 @@ main > h1 { margin-bottom: 2rem }
 .nav.bd-sidenav li .nav.bd-sidenav li span { background-color: #F7F7EE }
 .nav>ul { padding-left: .5rem}
 .nav>ul>li { font-size: 1.2rem; text-align: right }
-.nav li a { padding: 4px 0px; color:#FFF; text-decoration:none; text-transform: capitalize; text-shadow: 3px 0 4px #8D7D5C}
+.nav li a { padding: 4px 0px; color:#FFF; text-decoration:none; text-shadow: 3px 0 4px #8D7D5C}
 .nav ul li a:hover, .nav ul li a.active {color:#9A3503; text-shadow: none}
 .nav ul li ul { list-style-type: none; margin-top: .5rem}
 .nav ul li ul li { border:none; padding: 0; font-size: .95em}

@@ -10,17 +10,18 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2020-01-12 14:07+0000\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"PO-Revision-Date: 2020-01-12 21:34+0000\n"
+"Last-Translator: b'  <ricardoandrademendonca@gmail.com>'\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"X-Translated-Using: django-rosetta 0.9.3\n"
 
 #: apl/admin.py:6
 msgid "Lendarium administration"
-msgstr "Administração lendarium"
+msgstr "Administração do Lendarium"
 
 #: apl/settings.py:139
 msgid "Portuguese"
@@ -96,7 +97,7 @@ msgstr "Feminino"
 
 #: biblio/models.py:29
 msgid "Unknown/Undeclared"
-msgstr ""
+msgstr "Desconhecido/Não declarado"
 
 #: biblio/models.py:33 legends/models.py:69
 msgid "First Name"
@@ -258,7 +259,7 @@ msgstr "palavras-chave"
 
 #: content/models.py:35
 msgid "Ancestor"
-msgstr ""
+msgstr "Ascendente"
 
 #: content/models.py:37
 msgid "Menu"
@@ -344,7 +345,7 @@ msgstr "Registo escrito Lúdico"
 
 #: legends/models.py:80
 msgid "Gender"
-msgstr ""
+msgstr "Género"
 
 #: legends/models.py:82
 msgid "Age"
@@ -418,7 +419,8 @@ msgstr "Refs bibliográficas"
 
 #: legends/models.py:167
 msgid ""
-"Filling this will excuse you from filling the remaining fields of this group."
+"Filling this will excuse you from filling the remaining fields of this "
+"group."
 msgstr ""
 "O preenchimento deste campo dispensa o preenhimento dos restantes deste "
 "grupo."
@@ -580,16 +582,18 @@ msgstr "Reescrita?"
 #, python-format
 msgid ""
 "\n"
-"There is %(cats)s subcategory and <a href=\"#nstart\">%(narrs)s narratives</"
-"a>\n"
+"There is %(cats)s subcategory and <a href=\"#nstart\">%(narrs)s narratives</a>\n"
 "                "
 msgid_plural ""
 "\n"
-"There are %(cats)s subcategories and <a href=\"#nstart\">%(narrs)s "
-"narratives</a>\n"
+"There are %(cats)s subcategories and <a href=\"#nstart\">%(narrs)s narratives</a>\n"
 "                "
 msgstr[0] ""
+"\n"
+"Existe %(cats)s sub-categoria e <a href=\"#nstart\">%(narrs)s narrativas</a>"
 msgstr[1] ""
+"\n"
+"Existem %(cats)s sub-categorias e <a href=\"#nstart\">%(narrs)s narrativas</a>"
 
 #: legends/templates/legends/category.html:29
 #, python-format
@@ -602,7 +606,11 @@ msgid_plural ""
 "There are %(cats)s subcategories\n"
 "                "
 msgstr[0] ""
+"\n"
+"Existe %(cats)s sub-categoria"
 msgstr[1] ""
+"\n"
+"Existem %(cats)s sub-categorias"
 
 #: legends/templates/legends/inc_list_item.html:16
 #: legends/templates/legends/narrative.html:73
@@ -645,24 +653,22 @@ msgstr "mostrar tudo"
 
 #: legends/templates/legends/listing.html:62
 msgid "List"
-msgstr ""
+msgstr "Lista"
 
 #: legends/templates/legends/listing.html:64
 msgid "Map"
-msgstr ""
+msgstr "Mapa"
 
 #: legends/templates/legends/listing.html:74
 #, python-format
 msgid ""
 "\n"
-"        <h3 class=\"m-3\">No results found for search term '<i>%(qry)s</i>'</"
-"h3>\n"
+"        <h3 class=\"m-3\">No results found for search term '<i>%(qry)s</i>'</h3>\n"
 "        <a href=\"..\">Show all</a>\n"
 "            "
 msgstr ""
 "\n"
-"        <h3 class=\"m-3\">Não foram encontrados resultados para a sua "
-"pesquisa com a expressão '<i>%(qry)s</i>'</h3>\n"
+"        <h3 class=\"m-3\">Não foram encontrados resultados para a sua pesquisa com a expressão '<i>%(qry)s</i>'</h3>\n"
 "        <a href=\"..\">Mostrar tudo</a>\n"
 "            "
 
@@ -725,7 +731,6 @@ msgstr "Narrativas etiquetadas com \"%(tag_name)s\""
 
 #: legends/templates/legends/search.html:4
 #: legends/templates/legends/search.html:12
-#, fuzzy
 #| msgid "Search results"
 msgid "Search Results"
 msgstr "Resultados da Pesquisa"
@@ -748,7 +753,7 @@ msgstr "Índice"
 
 #: motif/models.py:30
 msgid "Indices"
-msgstr ""
+msgstr "Índices"
 
 #: motif/models.py:34
 msgid "Num"
@@ -784,7 +789,7 @@ msgstr "Distrito"
 
 #: portugal/models.py:99
 msgid "Region"
-msgstr ""
+msgstr "Região"
 
 #: portugal/models.py:100
 msgid "Regions"

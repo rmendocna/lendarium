@@ -17,6 +17,15 @@
   </head>
 
   <body>
+  <!-- Google Tag Manager -->
+<noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-KK4FNF"
+        height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+        j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+        '//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+        })(window,document,'script','dataLayer','GTM-KK4FNF');</script>
+<!-- End Google Tag Manager -->
       <header class="navbar fixed-top navbar-light align-items-start flex-nowrap">
           <a class="navbar-brand" href="/">
               <div class="d-none d-md-block"><img alt="{% trans 'Centro de Estudos Ataíde Oliveira' %}" src="{% static 'img/logo.png' %}"></div>
@@ -50,9 +59,8 @@
           <div class="row flex-xl-nowrap">
               <div class="col-12 mt-1 mt-md-5 mt-md-5 pt-md-3 col-md-3 col-xl-2 bd-sidebar">
                   <nav class="collapse bd-links" id="bd-docs-nav">
-                      <form class="input-group mt-md-5 mb-3 pr-2" method="post" style="opacity: .8" action="{% url 'search' %}">
-                          {% csrf_token %}
-                          <input type="text" name="query" class="form-control" placeholder="{% trans 'Search' %}" aria-label="Search box with button" aria-describedby="button-addon1">
+                      <form class="input-group mt-md-5 mb-3 pr-2" style="opacity: .8" action="{% url 'search' %}">
+                          <input type="text" required="true" {% if 'query' in request.GET %}value="{{ request.GET.query }}"{% endif %} name="query" class="form-control" placeholder="{% trans 'Search' %}" aria-label="Search box" aria-describedby="button-addon1">
                           <div class="input-group-append">
                             <button class="btn btn-outline-light" id="button-addon1"><i class="fa fa-search"></i></button>
                           </div>
@@ -87,7 +95,18 @@
            return true
       })
   </script>
-  {% block js %}
-  {% endblock %}
+  {% block js %}{% endblock %}
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-782755-21']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+       var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+       ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+       var s = document.getElementsByTagName('script')[0];
+       s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
   </body>
 </html>
