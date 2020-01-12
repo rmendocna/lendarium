@@ -20,7 +20,6 @@ from django.conf.urls.i18n import i18n_patterns
 from django.urls import path, re_path, include
 
 from content.views import index
-from legends.views import search
 
 urlpatterns = i18n_patterns(
     # re_path(r'^select2/', include('django_select2.urls')),
@@ -35,7 +34,6 @@ urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 urlpatterns += [
     path('i18n/', include('django.conf.urls.i18n')),
     path('aplng/', include('legends.langurls')),
-    path('search/', search, name='search'),
     path('places/', include('portugal.urls')),
     path('biblio/', include('biblio.urls')),
 ]

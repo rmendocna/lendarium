@@ -1,8 +1,13 @@
 {% extends 'legends/listing.html' %}
 {% load i18n %}
 
+{% block head_title %}{% if category %}{{ category.name }}{% else %}{% trans 'Search Results' %}{% endif %}{% endblock %}
 
 {% block breadcrumbs %}{% endblock %}
 
 {% block redirect_to %}{% endblock %}
 
+{% block title %}{% if category %}<a href="{% url 'category-detail' category=category.slug %}">
+    <span class="text-muted">{% trans 'Category' %}:</span> {{ category.name }} </a>
+        {% else %} {% trans 'Search Results' %}{% endif %}
+{% endblock %}

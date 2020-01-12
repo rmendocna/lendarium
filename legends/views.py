@@ -2,8 +2,8 @@ from django.conf import settings
 from django.contrib.postgres.search import SearchQuery, SearchRank, SearchVector
 from django.core.paginator import Paginator
 from django.core.serializers import serialize
-from django.http import HttpResponseBadRequest, HttpResponse
-from django.shortcuts import redirect, render
+from django.http import HttpResponse
+from django.shortcuts import redirect
 from django.utils.translation import get_language
 from django.views.generic.detail import DetailView
 from django.views.generic.list import ListView
@@ -13,13 +13,12 @@ from tagging.utils import calculate_cloud
 
 from .models import Narrative, Category
 
+PAGE_ITEMS = 30
+
 
 def old_category_redirect(request, id, page=1):
     cat = Category.objects.get(id__exact=int(id))
     return redirect('category-detail', slug=cat.slug)
-
-
-PAGE_ITEMS = 30
 
 
 class LangMixin(object):
@@ -163,6 +162,37 @@ class SearchView(NarrativeListView):
         return context
 
 
+class SearchAllView(LangMixin, ListView):
+
+    model = Narrative
+    template_name = 'legends/search.html'
+    search_keys = ('title', 'keywords')
+    search_query = None
+    paginate_by = PAGE_ITEMS
+
+    def post(self, request, *args, **kwargs):
+        self.search_keys = ('title', 'transcription', self.get_lang_field('keywords'),
+                            self.get_lang_field('common_title'))
+        self.search_query = SearchQuery(request.POST['query'])
+        return super(SearchAllView, self).get(request, *args, **kwargs)
+
+    def get(self, request, *args, **kwargs):
+        self.search_keys = ('title', self.get_lang_field('keywords'), self.get_lang_field('common_title'))
+        self.search_query = SearchQuery(request.GET['query'])
+        return super(SearchAllView, self).get(request, *args, **kwargs)
+
+    def get_queryset(self):
+        vector = SearchVector(*self.search_keys)
+        qs = super(SearchAllView, self).get_queryset().defer('rating', 'notes', 'other')
+        results = qs.annotate(rank=SearchRank(vector, self.search_query)).filter(rank__gt=0.0).order_by('-rank')
+        return results
+
+    def get_context_data(self, **kwargs):
+        context = super(SearchAllView, self).get_context_data(**kwargs)
+        context['is_search'] = True
+        return context
+
+
 class NarrativeView(LangMixin, DetailView):
 
     template_name = 'legends/narrative.html'
@@ -200,35 +230,3 @@ def legend_by_id(request, nid, cid=None):
     else:
         cat = Category.objects.get(pk=cid)
     return redirect('narrative-detail', category=cat.slug, slug=narr.slug)
-
-
-def search(request):
-    if 'REFERER' not in request.META:
-        return HttpResponseBadRequest
-    keys = ('title', 'keywords')
-    if request.method == 'POST':
-        keys += ('transcription',)
-        query = SearchQuery(request.POST['query'])
-    else:
-        query = SearchQuery(request.GET['query'])
-    vector = SearchVector(keys)
-    legends = Narrative.objects.annotate(rank=SearchRank(vector, query)).order_by('-rank')
-    paginator = Paginator(legends, PAGE_ITEMS)
-    object_list = paginator.object_list
-    return render(request, 'lengends/search.html', {'paginator': paginator, 'object_list': object_list})
-
-
-# def place(request, initial, pid):
-#     kwargs = {'extra_context': {}}
-#     if initial in ['p', 'f']:  # its a parish
-#         place = Region.objects.get(id=pid)
-#         queryset = Narrative.objects.filter(is_public=True, collection_place__parish=place)
-#         kwargs['extra_context']['place']
-#     mpolys = [GPolygon(kwargs['extra_context']['place'].mpoly.tuple[0][0], stroke_color="#000000", stroke_weight=1,
-#                        fill_color="#666666")]
-#     kwargs['extra_context']['map'] = GoogleMap(polygons=mpolys)
-#     kwargs['template_object_name'] = 'narrative'
-#     tags = list(Tag.objects.usage_for_queryset(queryset, counts=True))
-#     kwargs['extra_context']['cloud'] = calculate_cloud(tags, steps=9)
-#     return render(request, queryset, kwargs)
-

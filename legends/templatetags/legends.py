@@ -1,10 +1,10 @@
 from django import template
-from django.template.loader import get_template
 
 register = template.Library()
 
 
-def page_index(page_obj, style=""):
+@register.inclusion_tag('legends/inc_page_index.html', takes_context=True)
+def page_index(context, page_obj, style=""):
     idx = []
     if page_obj and page_obj.has_other_pages():
         if page_obj.has_previous():
@@ -22,8 +22,4 @@ def page_index(page_obj, style=""):
                 if end - 2 > nxt + 1:
                     idx += ['..']
                 idx += [i for i in range(max(nxt+1, end-2), end)]
-    return {'idx': idx, 'pg': page_obj, 'style': style }
-
-
-t = get_template('legends/inc_page_index.html')
-register.inclusion_tag(t)(page_index)
+    return {'idx': idx, 'pg': page_obj, 'style': style, 'query': context['request'].GET.get('query', None)}
