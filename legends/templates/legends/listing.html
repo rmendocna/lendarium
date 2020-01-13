@@ -45,20 +45,6 @@
     {% block subcategories %}{% endblock %}
 
     {% if object_list|length or is_search %}
-<div class="ml-auto small d-flex flex-wrap justify-content-between">
-        {% page_index page_obj style="m-2" %}
-        {% if category %}
-    <div>
-        <form class="input-group ml-2" action="{% if category %}{% url 'search-category' category=category.slug %}#{% else %}{% url 'search' %}{% endif %}">
-            <input type="text" name="query" {% if request.GET.query|length %} value="{{ request.GET.query }}" {% endif %}class="form-control-sm" placeholder="{% trans 'Search' %}{% if category %} {% trans 'category' %}{% endif %}" aria-label="{% trans 'Search box with button' %}" aria-describedby="button-addon2">
-            <div class="input-group-append">
-                <button class="btn btn-sm btn-outline-secondary" id="button-addon2"><i class="fa fa-search"></i></button>
-                {% if is_search %}<a href=".." class="btn btn-sm btn-outline-danger" title="{% trans 'show all' %}"><i class="fa fa-times"></i></a>{% endif %}
-            </div>
-        </form>
-    </div>
-        {% endif %}
-</div>
 <nav>
     <div class="nav nav-tabs" role="tablist">
         <a class="nav-item nav-link active" id="list-tab" data-toggle="tab" href="#list" role="tab" aria-controls="list" aria-selected="true">{% trans 'List' %}</a>
@@ -69,6 +55,20 @@
 </nav>
 <div class="tab-content">
     <div class="tab-pane fade show active" id="list" role="tabpanel" aria-labelledby="list-tab">
+        <div class="ml-auto small d-flex flex-wrap justify-content-between">
+            {% page_index page_obj style="m-2" %}
+            {% if category %}
+            <div>
+                <form class="input-group ml-2" action="{% if category %}{% url 'search-category' category=category.slug %}#{% else %}{% url 'search' %}{% endif %}">
+                    <input type="text" name="query" {% if request.GET.query|length %} value="{{ request.GET.query }}" {% endif %}class="form-control-sm" placeholder="{% trans 'Search' %}{% if category %} {% trans 'category' %}{% endif %}" aria-label="{% trans 'Search box with button' %}" aria-describedby="button-addon2">
+                    <div class="input-group-append">
+                        <button class="btn btn-sm btn-outline-secondary" id="button-addon2"><i class="fa fa-search"></i></button>
+                        {% if is_search %}<a href=".." class="btn btn-sm btn-outline-danger" title="{% trans 'show all' %}"><i class="fa fa-times"></i></a>{% endif %}
+                    </div>
+                </form>
+            </div>
+            {% endif %}
+        </div>
     {% for narr in object_list %}
         {% include 'legends/inc_list_item.html' with narr=narr category=category %}
     {% empty %}
@@ -83,12 +83,12 @@
             {% endif %}
         {% endif %}
     {% endfor %}
+        <small class="nav mx-auto">{% page_index page_obj style="m-2 justify-content-center" %}</small>
     </div>
     <div class="tab-pane fade pt-3" id="map" role="tabpanel" aria-labelledby="map-tab">
         <div id="map-box"></div>
     </div>
 </div>
-<small class="nav mx-auto">{% page_index page_obj style="m-2 justify-content-center" %}</small>
     {% endif %}
 {% endblock %}
 
@@ -104,7 +104,7 @@
 
 {% block js %}
     {{ block.super }}
-    {% if category or tag or is_search %}
+    {% if category or tag or is_search or is_biblio %}
     <script src='//api.mapbox.com/mapbox.js/v3.2.1/mapbox.js'></script>
     <script src="//unpkg.com/axios/dist/axios.min.js"></script>
     <script>
@@ -125,13 +125,18 @@ var centroid = [0, 0],
 axios.get('{% url "api-places" %}?ids={% for o in object_list %}{{ o.pk}}{% if not forloop.last %}.{% endif %}{% endfor %}').then(function(response) {
     placesLayer = L.geoJSON(response.data, {
         style: function (feature) {
-            return {color: feature.properties.color || '#F00'};
+            return {
+                // fillColor: feature.properties.level == 1 ? '#F77' : (feature.properties.level == 2 ? '#7F7' : '#77F'),
+                fillOpacity: 0.2 + feature.properties.level * .1,
+                opacity: 1,
+                color: feature.properties.level == 1 ? '#A00' : (feature.properties.level == 2 ? '#0A0' : '#00A')
+            };
         },
         onEachFeature: function (feature, layer) {
             var id = feature.properties.pk,
                 content = '<h5>' + feature.properties.name + '</h5>';
             $('.place-' + id).each(function(i, o) {
-                content += o.parentElement.outerHTML + '<br />'
+                content += o.parentElement.outerHTML
             })
             layer.bindPopup(content);
         }

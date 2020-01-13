@@ -1,8 +1,6 @@
 from django.conf import settings
 from django.contrib.postgres.search import SearchQuery, SearchRank, SearchVector
 from django.core.paginator import Paginator
-from django.core.serializers import serialize
-from django.http import HttpResponse
 from django.shortcuts import redirect
 from django.utils.translation import get_language
 from django.views.generic.detail import DetailView
@@ -106,40 +104,6 @@ class NarrativeListTag(ListMixin, DetailView):
                 page_obj=page,
             ))
         return context
-
-
-class JSONListView(ListView):
-
-    response_class = HttpResponse
-
-    def get_context_data(self, **kwargs):
-        context = super(JSONListView, self).get_context_data(**kwargs)
-        narratives = context['object_list']
-        if not narratives.count():
-            narratives = context['page_obj'].object_list
-        places = [ol.collection_place for ol in narratives]
-        collections = serialize('geojson', places, geometry_field='mpoly', fields=['pk', 'name'])
-        return collections
-
-    def render_to_response(self, context, **response_kwargs):
-        kwargs = response_kwargs or {}
-        kwargs.update(dict(content_type='application/json'))
-        return self.response_class(context, **kwargs)
-
-
-class CategoryPlacesListApi(CategoryMixin, JSONListView):
-
-    pass
-
-
-class PlacesListApi(JSONListView):
-
-    model = Narrative
-
-    def get_queryset(self):
-        qs = super(PlacesListApi, self).get_queryset()
-        ids = self.request.GET.get('ids', '').split('.')
-        return qs.filter(pk__in=ids)
 
 
 class SearchView(NarrativeListView):

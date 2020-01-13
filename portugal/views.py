@@ -2,7 +2,10 @@ from itertools import chain
 
 from django.conf import settings
 from django.core.paginator import Paginator
+from django.core.serializers import serialize
+from django.http import HttpResponse
 from django.views.generic.detail import DetailView
+from django.views.generic.list import ListView
 
 from mptt.utils import drilldown_tree_for_node
 
@@ -41,3 +44,30 @@ class PlaceView(DetailView):
             drilldown=drilldown_tree_for_node(place),
         ))
         return context
+
+
+class JSONListView(ListView):
+
+    response_class = HttpResponse
+
+    def render_to_response(self, context, **response_kwargs):
+        kwargs = response_kwargs or {}
+        kwargs.update(dict(content_type='application/json'))
+        return self.response_class(context, **kwargs)
+
+
+class PlacesListApi(JSONListView):
+
+    model = Region
+
+    def get_context_data(self, **kwargs):
+        context = super(JSONListView, self).get_context_data(**kwargs)
+        collections = serialize('geojson', context['object_list'], geometry_field='mpoly',
+                                fields=['pk', 'name', 'level'])
+        return collections
+
+    def get_queryset(self):
+        qs = super(PlacesListApi, self).get_queryset()
+        ids = self.request.GET.get('ids', '').split('.')
+        return qs.filter(collections__pk__in=ids).only('mpoly', 'pk', 'name', 'level').distinct().order_by('level')
+

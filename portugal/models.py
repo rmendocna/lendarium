@@ -1,7 +1,7 @@
 from django.contrib.gis.db import models as gis_models
 from django.db import models
 from django.urls import reverse
-from django.utils.translation import ugettext_lazy as _, get_language
+from django.utils.translation import ugettext_lazy as _
 
 import mptt
 from mptt.models import MPTTModel, TreeForeignKey
@@ -21,48 +21,6 @@ class NUTS(MPTTModel):
 
     class MPTTMeta:
         order_insertion_by = ['designacao']
-
-
-# class Distrito(models.Model):
-#     di = models.CharField(_('Di'), max_length=2,)
-#     name = models.CharField(_('Name'), max_length=50,)
-#     area = models.FloatField(_('Area'), null=True)
-#
-#     class Meta:
-#         verbose_name = _("District")
-#
-#     def __str__(self):
-#         return "%s" % self.name
-#
-#
-# class Concelho(gis_models.Model):
-#     dico = models.CharField(_('DiCo'), max_length=4, blank=True)
-#     name = models.CharField(_('Name'), max_length=50)
-#     area = models.FloatField(_('Area'), null=True)
-#     distrito = models.ForeignKey(Distrito, models.PROTECT, verbose_name=_('District'))
-#     nuts = models.IntegerField("NUT CODE", null=True, blank=True)
-#     nutsiii = models.ForeignKey(NUTS, models.PROTECT, null=True, verbose_name="NUTS", blank=True)
-#
-#     mpoly = gis_models.MultiPolygonField()
-#     # objects = gis_models.GeoManager()
-#
-#     class Meta:
-#         verbose_name = _("County")
-#         verbose_name_plural = _("Counties")
-#         ordering = ['name']
-#
-#     def nuts_code(self):
-#         if self.nutsiii:
-#             return "RC%s%s%02d" % (self.nutsiii.parent.id, self.nutsiii.code, self.nuts)
-#         else:
-#             return ''
-#     nuts_code.short_description = _("NUTS code")
-#
-#     def get_absolute_url(self):
-#         return reverse('place', kwargs=dict(initial='c', pid=str(self.id)))
-#
-#     def __str__(self):
-#         return "%s" % self.name
 
 
 class Region(gis_models.Model):

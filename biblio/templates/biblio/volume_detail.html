@@ -1,4 +1,4 @@
-{% extends 'base.html' %}
+{% extends 'legends/listing.html' %}
 {% load i18n legends %}
 
 {% block breadcrumb %}
@@ -7,6 +7,7 @@
 
 {% block title %}{{ object }}{% endblock %}
 
+{% comment %}
 {% block content %}
     {% block subcategories %}{% endblock %}
 
@@ -26,3 +27,4 @@
     {% endfor %}
 <small class="nav mx-auto">{% page_index page_obj style="mt-3 justify-content-center" %}</small>
 {% endblock %}
+{% endcomment %}

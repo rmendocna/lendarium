@@ -1,3 +1,4 @@
+from django.conf import settings
 from django.core.paginator import Paginator
 from django.views.generic import ListView, DetailView
 
@@ -31,6 +32,8 @@ class BiblioView(DetailView):
 
         context.update(dict(
             object_list=page.object_list,
+            is_biblio=True,
+            map_token=settings.MAPBOX_TOKEN,
             page_obj=page,
         ))
         return context
