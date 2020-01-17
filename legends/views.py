@@ -69,10 +69,16 @@ class NarrativeListView(CategoryMixin, ListView):
 
     def get_context_data(self, **kwargs):
         context = super(NarrativeListView, self).get_context_data(**kwargs)
-        if context['object_list'].count() > 0:
-            tags = list(Tag.objects.usage_for_queryset(context['object_list'], counts=True, min_count=2))
-        else:
-            tags = []
+        sample = context['object_list']
+        if context['category'] and not sample.count():
+            descendant_ids = context['category'].get_descendants().values_list('pk', flat=True)
+            sample = Narrative.objects.filter(narrativecategory_related__legendcategory_id__in=descendant_ids)
+        tags = []
+        c = 1
+        while not tags or len(tags) > 30:
+            c += 1
+            tags = Tag.objects.usage_for_queryset(sample, counts=True, min_count=c)
+
         context.update(dict(
             categories=Category.objects.filter(parent__isnull=True),
             map_token=settings.MAPBOX_TOKEN,
