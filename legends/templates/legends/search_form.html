@@ -1,0 +1,23 @@
+{%extends 'categories.html'%}
+{%load i18n legend_tags humanize tagging_tags%}
+{%block head_title%}{%trans 'Search the Archive'%}{%endblock%}
+{%block extra_head%}{{form.media}}
+<link rel="stylesheet" type="text/css" href="/sitemedia/css/reset-fonts-grids.css">
+<style type="text/css">
+.help_text {color:#999; padding:0px 10px; }
+</style>
+{{block.super}}
+{%endblock%}
+
+{%block title%}{%trans 'Search the Archive'%}{%endblock%}
+{%block content%}
+<form method="post">
+{%autoescape off%}
+{% csrf_token %}
+{{form.as_div}}
+{%endautoescape%}
+<div style="text-align:right; padding: 10px">
+<input type="submit" name="go" value="{%trans 'Search now'%}" /></div>
+</form>
+{%endblock%}
+
