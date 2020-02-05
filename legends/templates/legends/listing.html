@@ -96,7 +96,7 @@
     {% if cloud|length %}
     <div class="d-none d-xl-block col-xl-2 bd-toc">
         {% for t in cloud %}
-            <a href="{% url 'tag-detail' tid=t.id %}" style="font-size: 1{{ t.font_size }}0%">{{ t.name }}<sup>({{ t.count }})</sup> </a> {% endfor %}
+            <a href="{% url 'tag-detail' tid=t.id %}" style="font-size: 1{{ t.font_size }}0%">{{ t.name }}<!--sup>({# t.count #})</sup--> </a> {% endfor %}
     </div>
     {% endif %}
 {% endblock %}

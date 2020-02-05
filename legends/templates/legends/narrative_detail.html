@@ -16,7 +16,7 @@ blockquote {background-color:#FFFFF2; padding: 5px 10px; margin: 5px; border-lef
 
 {% block langnext %}
  {% for lang in LANGUAGES %}{% ifnotequal lang.0 LANGUAGE_CODE %}{%spaceless%}
- <a href="{% url get_language lang.0%}?next={%ifequal narrative.slug narrative.slug_en%}{% url narrative_view narrative.slug_pt %}{%else%}{% url  narrative_view narrative.slug_en%}{%endifequal%}{%if current_category%}?category={{current_category.id}}{%else%}{%if  place%}?place={{place.id}}{%endif%}{%endif%}">{{lang.0|upper}}</a>
+ <a href="{% url get_language lang.0%}?next={%ifequal narrative.slug slug=narrative.slug_en%}{% url 'narrative-detail' slug=narrative.slug_pt %}{%else%}{% url 'narrative-detail' narrative.slug_en%}{%endifequal%}{%if current_category%}?category={{current_category.id}}{%else%}{%if  place%}?place={{place.id}}{%endif%}{%endif%}">{{lang.0|upper}}</a>
  {%endspaceless%} {%else%} {{lang.0|upper}} {%endifnotequal%}{%endfor%}
 {{request}}
 {%endblock%}

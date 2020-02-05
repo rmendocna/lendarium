@@ -74,10 +74,10 @@ class NarrativeListView(CategoryMixin, ListView):
             descendant_ids = context['category'].get_descendants().values_list('pk', flat=True)
             sample = Narrative.objects.filter(narrativecategory_related__legendcategory_id__in=descendant_ids)
         tags = []
-        c = 1
-        while not tags or len(tags) > 30:
-            c += 1
-            tags = Tag.objects.usage_for_queryset(sample, counts=True, min_count=c)
+        c = 10
+        while len(tags) < 30 and c > 1:
+            c -= 1
+            tags = Tag.objects.usage_for_queryset(sample, min_count=c)
 
         context.update(dict(
             categories=Category.objects.filter(parent__isnull=True),
