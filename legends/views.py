@@ -184,7 +184,7 @@ class NarrativeView(LangMixin, DetailView):
 def category_by_id(request, cid):
 
     cat = Category.objects.get(pk=cid)
-    return redirect('category-detail', slug=cat.slug)
+    return redirect('category-detail', category=cat.slug)
 
 
 def legend_by_id(request, nid, cid=None):
