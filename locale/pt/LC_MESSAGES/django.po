@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-01-12 14:07+0000\n"
+"POT-Creation-Date: 2020-11-03 17:16+0000\n"
 "PO-Revision-Date: 2020-01-12 21:34+0000\n"
 "Last-Translator: b'  <ricardoandrademendonca@gmail.com>'\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -23,11 +23,11 @@ msgstr ""
 msgid "Lendarium administration"
 msgstr "Administração do Lendarium"
 
-#: apl/settings.py:139
+#: apl/settings.py:143
 msgid "Portuguese"
 msgstr "Português"
 
-#: apl/settings.py:140
+#: apl/settings.py:144
 msgid "English"
 msgstr "Inglês"
 
@@ -136,7 +136,8 @@ msgstr "Cidade"
 msgid "Cities"
 msgstr "Cidades"
 
-#: biblio/models.py:79 legends/models.py:162
+#: biblio/models.py:79 legends/forms.py:12 legends/forms.py:20
+#: legends/models.py:162
 msgid "Title"
 msgstr "Título"
 
@@ -156,8 +157,8 @@ msgstr "Tipo de Volume"
 msgid "Editor"
 msgstr "Compilação"
 
-#: biblio/models.py:87 legends/models.py:170 legends/models.py:188
-#: legends/templates/legends/narrative.html:38
+#: biblio/models.py:87 legends/forms.py:21 legends/models.py:170
+#: legends/models.py:188 legends/templates/legends/narrative.html:38
 #: legends/templates/legends/narrative_detail.html:44
 msgid "Year"
 msgstr "Ano"
@@ -182,7 +183,7 @@ msgstr "Endereço web do Livro/Autor"
 msgid "Notes"
 msgstr "Notas"
 
-#: biblio/models.py:98 legends/models.py:191
+#: biblio/models.py:98 legends/forms.py:23 legends/models.py:191
 msgid "Presentation"
 msgstr "Forma"
 
@@ -207,25 +208,22 @@ msgid "Part, chaper, passage, page, etc.."
 msgstr "Parte, capítulo, passagem, página, etc."
 
 #: biblio/templates/biblio/volume_detail.html:5
-#: biblio/templates/biblio/volume_list.html:4
+#: biblio/templates/biblio/volume_list.html:4 templates/base.html:84
 msgid "Bibliography"
 msgstr "Bibliografia"
 
-#: biblio/templates/biblio/volume_detail.html:17
 #: biblio/templates/biblio/volume_list.html:13
-#: legends/templates/legends/listing.html:52 templates/base.html:55
+#: legends/templates/legends/listing.html:63 templates/base.html:63
 msgid "Search"
 msgstr "Pesquisa"
 
-#: biblio/templates/biblio/volume_detail.html:17
 #: biblio/templates/biblio/volume_list.html:13
-#: legends/templates/legends/listing.html:52
+#: legends/templates/legends/listing.html:63
 msgid "category"
 msgstr "categoria"
 
-#: biblio/templates/biblio/volume_detail.html:17
 #: biblio/templates/biblio/volume_list.html:13
-#: legends/templates/legends/listing.html:52
+#: legends/templates/legends/listing.html:63
 msgid "Search box with button"
 msgstr ""
 
@@ -298,6 +296,64 @@ msgstr "Análise"
 #: legends/admin.py:78
 msgid "References"
 msgstr "Referências"
+
+#: legends/forms.py:10
+msgid "Specific narrative"
+msgstr ""
+
+#: legends/forms.py:13
+msgid "As complete as you can"
+msgstr ""
+
+#: legends/forms.py:14 legends/templates/legends/tag.html:4
+#: legends/templates/legends/tag.html:15
+msgid "Keyword"
+msgstr "Palavra-chave"
+
+#: legends/forms.py:17 legends/models.py:171 legends/models.py:279
+msgid "Place"
+msgstr "Lugar"
+
+#: legends/forms.py:18
+#, fuzzy
+#| msgid "Audio Capture"
+msgid "Audio capture"
+msgstr "Recolha Áudio"
+
+#: legends/forms.py:19
+#, fuzzy
+#| msgid "Authors"
+msgid "Author(s)"
+msgstr "Autores"
+
+#: legends/forms.py:22 legends/models.py:193
+#: legends/templates/legends/narrative.html:58
+#: legends/templates/legends/narrative_detail.html:58
+msgid "Belief"
+msgstr "Crença"
+
+#: legends/forms.py:24 legends/models.py:265 motif/models.py:71
+msgid "Type"
+msgstr "Tipo"
+
+#: legends/forms.py:26 motif/models.py:61
+msgid "Motif"
+msgstr "Motivo"
+
+#: legends/forms.py:32
+#, fuzzy
+#| msgid "publication date"
+msgid "Publications"
+msgstr "data de publicação"
+
+#: legends/forms.py:34 legends/templates/legends/narrative.html:70
+#: legends/templates/legends/narrative_detail.html:69
+msgid "Classifications"
+msgstr "Classificações"
+
+#: legends/forms.py:52
+msgid "You must fill-in at least one look-up field"
+msgstr ""
 
 #: legends/models.py:19
 msgid "Unknown"
@@ -419,15 +475,10 @@ msgstr "Refs bibliográficas"
 
 #: legends/models.py:167
 msgid ""
-"Filling this will excuse you from filling the remaining fields of this "
-"group."
+"Filling this will excuse you from filling the remaining fields of this group."
 msgstr ""
 "O preenchimento deste campo dispensa o preenhimento dos restantes deste "
 "grupo."
-
-#: legends/models.py:171 legends/models.py:279
-msgid "Place"
-msgstr "Lugar"
 
 #: legends/models.py:173 legends/templates/legends/narrative.html:40
 #: legends/templates/legends/narrative_detail.html:46
@@ -470,11 +521,6 @@ msgstr "Século"
 #: legends/models.py:190
 msgid "Decade"
 msgstr "Década"
-
-#: legends/models.py:193 legends/templates/legends/narrative.html:58
-#: legends/templates/legends/narrative_detail.html:58
-msgid "Belief"
-msgstr "Crença"
 
 #: legends/models.py:195
 msgid "Rating"
@@ -530,10 +576,6 @@ msgstr "Separe com vírgulas. Serão convertidas para minúsculas."
 msgid "Record"
 msgstr "Registo"
 
-#: legends/models.py:265 motif/models.py:71
-msgid "Type"
-msgstr "Tipo"
-
 #: legends/models.py:272
 msgid "Related Type"
 msgstr "Tipo Relacionado"
@@ -582,18 +624,21 @@ msgstr "Reescrita?"
 #, python-format
 msgid ""
 "\n"
-"There is %(cats)s subcategory and <a href=\"#nstart\">%(narrs)s narratives</a>\n"
+"There is %(cats)s subcategory and <a href=\"#nstart\">%(narrs)s narratives</"
+"a>\n"
 "                "
 msgid_plural ""
 "\n"
-"There are %(cats)s subcategories and <a href=\"#nstart\">%(narrs)s narratives</a>\n"
+"There are %(cats)s subcategories and <a href=\"#nstart\">%(narrs)s "
+"narratives</a>\n"
 "                "
 msgstr[0] ""
 "\n"
 "Existe %(cats)s sub-categoria e <a href=\"#nstart\">%(narrs)s narrativas</a>"
 msgstr[1] ""
 "\n"
-"Existem %(cats)s sub-categorias e <a href=\"#nstart\">%(narrs)s narrativas</a>"
+"Existem %(cats)s sub-categorias e <a href=\"#nstart\">%(narrs)s narrativas</"
+"a>"
 
 #: legends/templates/legends/category.html:29
 #, python-format
@@ -624,20 +669,23 @@ msgstr "Motivos"
 msgid "Types"
 msgstr "Tipos"
 
-#: legends/templates/legends/inc_page_index.html:7
+#: legends/templates/legends/inc_page_index.html:6
 msgid "First page"
 msgstr "Primeira página"
 
-#: legends/templates/legends/inc_page_index.html:21
+#: legends/templates/legends/inc_page_index.html:20
 msgid "Last page"
 msgstr "Última página"
 
-#: legends/templates/legends/inc_page_index.html:28
-#, python-format
+#: legends/templates/legends/inc_page_index.html:25
+#, fuzzy, python-format
+#| msgid ""
+#| "\n"
+#| "    %(pg_first)s-%(pg_last)s of %(total)s\n"
+#| "    "
 msgid ""
 "\n"
-"    %(pg_first)s-%(pg_last)s of %(total)s\n"
-"    "
+"    %(pg_first)s-%(pg_last)s of %(total)s"
 msgstr ""
 "\n"
 "    %(pg_first)s-%(pg_last)s de %(total)s\n"
@@ -647,30 +695,47 @@ msgstr ""
 msgid "Search results"
 msgstr "Resultados da Pesquisa"
 
-#: legends/templates/legends/listing.html:55
-msgid "show all"
-msgstr "mostrar tudo"
-
-#: legends/templates/legends/listing.html:62
+#: legends/templates/legends/listing.html:50
 msgid "List"
 msgstr "Lista"
 
-#: legends/templates/legends/listing.html:64
+#: legends/templates/legends/listing.html:52
 msgid "Map"
 msgstr "Mapa"
 
-#: legends/templates/legends/listing.html:74
-#, python-format
+#: legends/templates/legends/listing.html:66
+msgid "show all"
+msgstr "mostrar tudo"
+
+#: legends/templates/legends/listing.html:76
+#, fuzzy, python-format
+#| msgid ""
+#| "\n"
+#| "        <h3 class=\"m-3\">No results found for search term '<i>%(qry)s</"
+#| "i>'</h3>\n"
+#| "        <a href=\"..\">Show all</a>\n"
+#| "            "
 msgid ""
 "\n"
-"        <h3 class=\"m-3\">No results found for search term '<i>%(qry)s</i>'</h3>\n"
-"        <a href=\"..\">Show all</a>\n"
+"        <h3 class=\"m-3\">No results found for search term '<i>%(qry)s</i>'</"
+"h3>\n"
 "            "
 msgstr ""
 "\n"
-"        <h3 class=\"m-3\">Não foram encontrados resultados para a sua pesquisa com a expressão '<i>%(qry)s</i>'</h3>\n"
+"        <h3 class=\"m-3\">Não foram encontrados resultados para a sua "
+"pesquisa com a expressão '<i>%(qry)s</i>'</h3>\n"
 "        <a href=\"..\">Mostrar tudo</a>\n"
 "            "
+
+#: legends/templates/legends/listing.html:80
+#, fuzzy
+#| msgid "show all"
+msgid "Show all"
+msgstr "mostrar tudo"
+
+#: legends/templates/legends/listing.html:82
+msgid "Back"
+msgstr ""
 
 #: legends/templates/legends/narrative.html:24
 msgid "Edit"
@@ -719,25 +784,30 @@ msgstr "Séc. %(century)s"
 msgid "Related Versions"
 msgstr "Versões Relacionadas"
 
-#: legends/templates/legends/narrative.html:70
-#: legends/templates/legends/narrative_detail.html:69
-msgid "Classifications"
-msgstr "Classificações"
-
 #: legends/templates/legends/narrative_detail.html:26
 #, python-format
 msgid "Narratives tagged with \"%(tag_name)s\""
 msgstr "Narrativas etiquetadas com \"%(tag_name)s\""
 
 #: legends/templates/legends/search.html:4
-#: legends/templates/legends/search.html:12
-#| msgid "Search results"
 msgid "Search Results"
 msgstr "Resultados da Pesquisa"
 
-#: legends/templates/legends/tag.html:4 legends/templates/legends/tag.html:15
-msgid "Keyword"
-msgstr "Palavra-chave"
+#: legends/templates/legends/search.html:12
+#, python-format
+msgid "Search Results for `%(expression)s`"
+msgstr ""
+
+#: legends/templates/legends/search_form.html:3
+#: legends/templates/legends/search_form.html:12
+msgid "Search the Archive"
+msgstr ""
+
+#: legends/templates/legends/search_form.html:20
+#, fuzzy
+#| msgid "Search"
+msgid "Search now"
+msgstr "Pesquisa"
 
 #: motif/models.py:20
 msgid "Is Type?"
@@ -763,35 +833,31 @@ msgstr "Nº"
 msgid "index"
 msgstr "índice"
 
-#: motif/models.py:61
-msgid "Motif"
-msgstr "Motivo"
-
-#: portugal/models.py:69
+#: portugal/models.py:27
 msgid "DiCoPar"
 msgstr "DiCoFre"
 
-#: portugal/models.py:70
+#: portugal/models.py:28
 msgid "Parish"
 msgstr "Freguesia"
 
-#: portugal/models.py:71
+#: portugal/models.py:29
 msgid "Other Info."
 msgstr "Outra Inf."
 
-#: portugal/models.py:72
+#: portugal/models.py:30
 msgid "Area"
 msgstr "Área"
 
-#: portugal/models.py:85
+#: portugal/models.py:43
 msgid "District"
 msgstr "Distrito"
 
-#: portugal/models.py:99
+#: portugal/models.py:57
 msgid "Region"
 msgstr "Região"
 
-#: portugal/models.py:100
+#: portugal/models.py:58
 msgid "Regions"
 msgstr "Regi&otilde;es"
 
@@ -799,10 +865,10 @@ msgstr "Regi&otilde;es"
 msgid "portuguese legends archive "
 msgstr "arquivo portugu&ecirc;s de lendas"
 
-#: templates/base.html:22 templates/base.html:23
+#: templates/base.html:31 templates/base.html:32
 msgid "Centro de Estudos Ataíde Oliveira"
 msgstr ""
 
-#: templates/base.html:74
+#: templates/base.html:80
 msgid "Archive of Portuguese Legends"
 msgstr "Arquivo Português de Lendas"
