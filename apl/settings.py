@@ -52,7 +52,7 @@ INSTALLED_APPS = [
     'content',
     'tinymce',
     'legends',
-    # 'debug_toolbar',
+    'debug_toolbar',
     'django_select2',
 ]
 
@@ -65,7 +65,10 @@ MIDDLEWARE = [
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.locale.LocaleMiddleware',
     'django.middleware.common.CommonMiddleware',
-    # 'debug_toolbar.middleware.DebugToolbarMiddleware',
+    'django.middleware.cache.UpdateCacheMiddleware',
+    'django.middleware.common.CommonMiddleware',
+    'django.middleware.cache.FetchFromCacheMiddleware',
+    'debug_toolbar.middleware.DebugToolbarMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
@@ -153,6 +156,17 @@ STATIC_ROOT = os.path.realpath(os.path.join(BASE_DIR, '..', '..', 'htdocs', 'sta
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "static"),
 ]
+
+
+CACHES = {
+    'default': {
+        'BACKEND': 'django.core.cache.backends.memcached.MemcachedCache',
+        'LOCATION': '127.0.0.1:11211',
+    }
+}
+CACHE_MIDDLEWARE_ALIAS = 'default'
+CACHE_MIDDLEWARE_SECONDS = 600
+CACHE_MIDDLEWARE_KEY_PREFIX = ''
 
 MAPBOX_TOKEN = 'pk.eyJ1Ijoicm1lbmRvIiwiYSI6ImNrM3Zvam5lMjBvaHAzbXE4Y2IzY3lqeXoifQ.7-9CXq_EgCcArICgOcXu6Q'
 try:

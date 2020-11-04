@@ -35,7 +35,9 @@ There are {{ cats }} subcategories
         </p>{% endwith%}
 <div class="list-group">
         {% for subcat in category.get_children %}
-    <a class="list-group-item" href="{{ subcat.get_absolute_url }}">{{ subcat }} {% if  subcat.get_descendant_count %}({{ subcat.get_descendant_count }}){% endif %} <span class="badge">{{ subcat.narrative_categories.count }}</span></a>
+    <a class="list-group-item" href="{{ subcat.get_absolute_url }}"> {{ subcat }}
+        {% if subcat.get_descendant_count %} ({{ subcat.get_descendant_count }}){% endif %}
+        <span class="badge">{{ subcat.narrative_categories.count }}</span></a>
         {% endfor %}
 </div>
     {% endif %}

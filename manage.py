@@ -1,4 +1,4 @@
-#!/home/bitnami/projects/lendarium/bin/python
+#!./bin/python
 """Django's command-line utility for administrative tasks."""
 import os
 import sys
