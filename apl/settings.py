@@ -52,7 +52,7 @@ INSTALLED_APPS = [
     'content',
     'tinymce',
     'legends',
-    'debug_toolbar',
+    # 'debug_toolbar',
     'django_select2',
 ]
 
@@ -68,7 +68,7 @@ MIDDLEWARE = [
     'django.middleware.cache.UpdateCacheMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.cache.FetchFromCacheMiddleware',
-    'debug_toolbar.middleware.DebugToolbarMiddleware',
+    # 'debug_toolbar.middleware.DebugToolbarMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
