@@ -24,9 +24,9 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'w!&sw6)8ruylqf_h0*ftr11=$cig#)9+-mequ(j0ov9ej%d$pj'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['34.252.14.46', 'lendarium.org', 'www.lendarium.org']
 
 SITE_ID = 1
 
@@ -146,9 +146,6 @@ LANGUAGES = [
     ('pt', _('Portuguese')),
     ('en', _('English')),
 ]
-
-# Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/2.2/howto/static-files/
 
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.realpath(os.path.join(BASE_DIR, '..', '..', 'htdocs', 'static'))
